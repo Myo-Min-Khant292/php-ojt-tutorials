@@ -1,0 +1,33 @@
+.mid-container {
+    margin: 200px auto;
+    width: 500px;
+}
+
+.mid-container > h1{
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.error-message { 
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.chess {
+    margin: 20px auto;
+    border: 1px solid black;
+}
+
+.col {
+    width: 30px;
+    height: 30px;
+}
+
+.color1 {
+    background-color: white;
+}
+
+.color2 {
+    background-color: black;
+}
