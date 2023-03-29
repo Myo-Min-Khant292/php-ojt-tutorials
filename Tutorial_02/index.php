@@ -41,7 +41,7 @@ function makeDiamondShape($row)
     <h1>Diamond</h1>
     <div class="mid-container">
         <div class="diamond">
-            <?php makeDiamondShape(7); ?>
+            <?php makeDiamondShape(13); ?>
         </div>
     </div>
 </body>
