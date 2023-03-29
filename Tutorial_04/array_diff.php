@@ -2,13 +2,15 @@
 
 function arrayDiff($arr1, $arr2)
 {
-    // your code here
+    $result = array();
+    foreach($arr1 as $value) {
+        if(!in_array($value , $arr2)) {
+            array_push($result , $value);
+        }
+    }
+    print_r($result);
 }
 
-// Result
-// arrayDiff([1, 2], [1]); // output => [2]
-// arrayDiff([1, 2, 2], [1]); // output => [2, 2]
-// arrayDiff([1, 2, 2], [2]); // output => [1]
-// arrayDiff([1, 2, 2], []); // output => [1, 2, 2]
-// arrayDiff([], [1, 2]); // output => []
-// arrayDiff([1, 2, 3], [1, 2]); // output => [3]
+arrayDiff([1, 2, 2],[]);
+
+?>
