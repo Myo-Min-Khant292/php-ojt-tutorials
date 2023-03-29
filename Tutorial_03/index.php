@@ -1,17 +1,19 @@
 <?php
+    $userAge = '';
+
     if(isset($_POST['submit'])) {
-        $dob = $_POST['dob'];
-        $tdyDate = date('Y-m-d');
-        if ($dob > date('Y-m-d')) {
-            echo "The date isn't even arrive yet";
+        $dob = date_create($_POST['dob']);
+        $tdyDate = date_create();
+    
+        if ($dob > $tdyDate) {
+            $userAge = "The date isn't even arrive yet";
         }else {
-            $userAge = date_diff($dob , $tdyDate);
-            echo $dob . "<br/>";
-            echo $tdyDate . "<br/>";
+            $result = date_diff($dob, $tdyDate);
+            $userAge = $result;
         }
     }
 
-    
+    echo $userAge;
 ?>
 
 <!DOCTYPE html>
