@@ -2,26 +2,22 @@
 
 function drawChessBorad($rows, $cols)
 {
-    if ($rows <= 0 || $cols <= 0) {
-        if ($rows <= 0 && $cols <= 0) {
-            echo '<p class="error-message">$rows and $cols must be greater than zero</p>';
-        } elseif ($rows <= 0) {
-            echo '<p class="error-message">$rows must be greater than zero</p>';
-        } elseif ($cols <= 0) {
-            echo '<p class="error-message">$cols must be greater than zero</p>';
-        }
-    } elseif (!is_numeric($rows) || !is_numeric($cols)) {
-        if (!is_numeric($rows) && !is_numeric($cols)) {
-            echo '<p class="error-message">$rows and $cols must be numbers</p>';
-        } elseif (!is_numeric($rows)) {
-            echo '<p class="error-message">$rows must be a number</p>';
-        } elseif (!is_numeric($cols)) {
-            echo '<p class="error-message">$cols must be a number</p>';
-        } elseif ($rows <= 0 && !is_numeric($cols)) {
-            echo '<p class="error-message">$rows parameter must be greater than 0. $cols parameter must be a number.</p>';
-        } elseif (!is_numeric($rows) && $cols <= 0) {
-            echo '<p class="error-message">$rows parameter must be a number. $cols parameter must be greater than 0</p>';
-        }
+    if ($rows <= 0 && !is_numeric($cols)) {
+        echo '<p class="error-message">$rows parameter must be greater than 0. $cols parameter must be a number.</p>';
+    }elseif (!is_numeric($rows) && $cols <= 0) {
+        echo '<p class="error-message">$rows parameter must be a number. $cols parameter must be greater than 0</p>';
+    }elseif ($rows <= 0 && $cols <= 0) {
+        echo '<p class="error-message">$rows and $cols must be greater than zero</p>';
+    }elseif ($rows <= 0) {
+        echo '<p class="error-message">$rows must be greater than zero</p>';
+    }elseif ($cols <= 0) {
+        echo '<p class="error-message">$cols must be greater than zero</p>';
+    }elseif (!is_numeric($rows) && !is_numeric($cols)) {
+        echo '<p class="error-message">$rows and $cols must be numbers</p>';
+    } elseif (!is_numeric($rows)) {
+        echo '<p class="error-message">$rows must be a number</p>';
+    } elseif (!is_numeric($cols)) {
+        echo '<p class="error-message">$cols must be a number</p>';
     }else {
         for ($i = 1; $i <= $rows; $i++) {
             echo '<tr class="row">';
@@ -54,7 +50,7 @@ function drawChessBorad($rows, $cols)
     <div class="mid-container">
         <h1>Chessboard</h1>
         <table class="chess">
-            <?php drawChessBorad(8 , 8); ?>
+            <?php drawChessBorad("MMK" , "MMK"); ?>
         <table>
     </div>
 </body>
