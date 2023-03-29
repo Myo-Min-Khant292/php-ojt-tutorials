@@ -6,10 +6,10 @@
         $tdyDate = date_create();
     
         if ($dob > $tdyDate) {
-            $userAge = "The date isn't even arrive yet"."</br>";
+            $userAge = "<h1 class='result'>The date isn't even arrive yet</h1>"."</br>";
         }else {
             $result = date_diff($dob, $tdyDate);
-            $userAge = ($result->format('%Y years %m months %d days'));  
+            $userAge = "<h1 class='result'>" . ($result->format('%Y years %m months %d days')). "</h1>";  
         }
     }
 ?>
@@ -26,7 +26,7 @@
 </head>
 <body>
     <div class='center-div'>
-        <h1 class='result'><?php echo $userAge; ?></h1>
+        <?php echo $userAge; ?></h1>
         <div class="calculator">
             <h1 class="title">Age Calculator</h1>
             <form action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="POST">
