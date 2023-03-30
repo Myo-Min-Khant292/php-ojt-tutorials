@@ -1,12 +1,10 @@
 <?php
     /**
-     * search difference in $arr1 from $arr2
-     * 
+     * search difference in $arr1 from $arr2 
      * @param array $arr1
      * @param array $arr2 
 
     */
-
     function arrayDiff($arr1, $arr2)
     {
         $result = array();
@@ -19,7 +17,5 @@
         }
         print_r($result);
     }
-
     arrayDiff([1, 2, 2],[]);
-
 ?>

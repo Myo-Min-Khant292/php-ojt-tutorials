@@ -3,39 +3,29 @@
      * creating diamond shape pattern
      * 
      * @param integer $row
-
     */
-
-
-function makeDiamondShape($row)
-{
-
-    // check error first
-    if ($row <= 0 ) {
-        echo '<p class="error-message">$row must be greater than zero</p>';
-    } elseif (!is_numeric($row)) {
-        echo '<p class="error-message">$rows must be a number</p>';
-    } elseif ($row % 2 == 0) {
-        echo '<p class="error-message">$row must be odd number.</p>';
-    }else {
-
-        // create diamond shape pattern
-        for ($i = 0; $i < $row; $i++) {
-            $numSpaces = abs($row - 2 * $i - 1) / 2;
-            $numStars = $row - $numSpaces * 2;
-    
-            for ($j = 0; $j < $numSpaces; $j++) {
-                echo "&nbsp ";
+    function makeDiamondShape($row)
+    {
+        if ($row <= 0 ) {
+            echo '<p class="error-message">$row must be greater than zero</p>';
+        } elseif (!is_numeric($row)) {
+            echo '<p class="error-message">$rows must be a number</p>';
+        } elseif ($row % 2 == 0) {
+            echo '<p class="error-message">$row must be odd number.</p>';
+        }else {
+            for ($i = 0; $i < $row; $i++) {
+                $numSpaces = abs($row - 2 * $i - 1) / 2;
+                $numStars = $row - $numSpaces * 2;
+                for ($j = 0; $j < $numSpaces; $j++) {
+                    echo "&nbsp ";
+                }
+                for ($j = 0; $j < $numStars; $j++) {
+                    echo "*";
+                }
+                echo "<br/>";
             }
-    
-            for ($j = 0; $j < $numStars; $j++) {
-                echo "*";
-            }
-    
-            echo "<br/>";
         }
     }
-}
 ?>
 
 <!DOCTYPE html>
