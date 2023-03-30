@@ -4,12 +4,15 @@
     if (isset($_POST['submit'])) {
         $dob = date_create($_POST['dob']);
         $tdyDate = date_create();
-    
+        
+        // check errors in dob
         if ($dob > $tdyDate) {
             $userAge = "<h1 class='error'>The date isn't even arrive yet</h1>"."</br>";
         }elseif (empty($_POST['dob'])) {
             $userAge = "<h1 class='error'>You have to put the data first</h1>"."</br>";
         }else {
+
+            // output results
             $result = date_diff($dob, $tdyDate);
             $userAge = "<h1 class='result'>" . ($result->format('%Y years %m months %d days')). "</h1>";  
         }

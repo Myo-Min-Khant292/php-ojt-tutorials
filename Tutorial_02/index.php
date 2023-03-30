@@ -2,6 +2,8 @@
 
 function makeDiamondShape($row)
 {
+
+    // check error first
     if ($row <= 0 ) {
         echo '<p class="error-message">$row must be greater than zero</p>';
     } elseif (!is_numeric($row)) {
@@ -9,6 +11,8 @@ function makeDiamondShape($row)
     } elseif ($row % 2 == 0) {
         echo '<p class="error-message">$row must be odd number.</p>';
     }else {
+
+        // create diamond shape pattern
         for ($i = 0; $i < $row; $i++) {
             $numSpaces = abs($row - 2 * $i - 1) / 2;
             $numStars = $row - $numSpaces * 2;

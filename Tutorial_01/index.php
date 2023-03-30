@@ -2,6 +2,8 @@
 
 function drawChessBorad($rows, $cols)
 {
+
+    // check errors
     if ($rows <= 0 && !is_numeric($cols)) {
         echo '<p class="error-message">$rows parameter must be greater than 0. $cols parameter must be a number.</p>';
     }elseif (!is_numeric($rows) && $cols <= 0) {
@@ -19,6 +21,8 @@ function drawChessBorad($rows, $cols)
     } elseif (!is_numeric($cols)) {
         echo '<p class="error-message">$cols must be a number</p>';
     }else {
+
+        // output the chessboard design
         for ($i = 1; $i <= $rows; $i++) {
             echo '<tr class="row">';
             for ($j = 1; $j <= $cols; $j++) {
