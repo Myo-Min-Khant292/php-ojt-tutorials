@@ -1,12 +1,14 @@
 <?php
     $userAge = '';
 
-    if(isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         $dob = date_create($_POST['dob']);
         $tdyDate = date_create();
     
         if ($dob > $tdyDate) {
-            $userAge = "<h1 class='result'>The date isn't even arrive yet</h1>"."</br>";
+            $userAge = "<h1 class='error'>The date isn't even arrive yet</h1>"."</br>";
+        }elseif (empty($_POST['dob'])) {
+            $userAge = "<h1 class='error'>You have to put the data first</h1>"."</br>";
         }else {
             $result = date_diff($dob, $tdyDate);
             $userAge = "<h1 class='result'>" . ($result->format('%Y years %m months %d days')). "</h1>";  
@@ -29,7 +31,7 @@
         <?php echo $userAge; ?></h1>
         <div class="calculator">
             <h1 class="title">Age Calculator</h1>
-            <form action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
                 <label for="dob">Date of Birth:</label>
                 <input type="date" id="dob" name="dob">
                 <input type="submit" name="submit" value="Calculate" class="calculate"> 
