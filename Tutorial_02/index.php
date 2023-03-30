@@ -1,4 +1,11 @@
 <?php
+    /**
+     * creating diamond shape pattern
+     * 
+     * @param integer $row
+
+    */
+
 
 function makeDiamondShape($row)
 {

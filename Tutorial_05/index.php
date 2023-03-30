@@ -1,7 +1,5 @@
 <?php
-    $csvFile = 'files/sample.csv';
-
-    $open = fopen($csvFile , r);
+    
 ?>
 
 <!DOCTYPE html>
