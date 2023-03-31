@@ -1,23 +1,28 @@
 .center-div {
-    width: 80%;
-    margin: 0 auto;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
+  width: 80%;
+  margin: 0 auto;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 }
 
-.center-div > h1 {
-    width: 97%;
-    margin: 20px auto;
-    font-size: 45px;
-    border-bottom: 1px solid gray;
+.center-div>h1 {
+  width: 97%;
+  margin: 20px auto;
+  font-size: 45px;
+  border-bottom: 1px solid gray;
 }
 
-.center-div > pre {
-    width: 97%;
-    margin: 20px auto 50px auto;
+.center-div>div {
+  width: 97%;
+  margin: 20px auto 50px auto;
 }
 
-.center-div > table {
-    width: 97%;
-    margin: 20px auto 50px auto;
+.center-div>pre {
+  width: 97%;
+  margin: 20px auto 50px auto;
+}
+
+.center-div>table {
+  width: 97%;
+  margin: 20px auto 50px auto;
 }

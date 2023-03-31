@@ -2,17 +2,10 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    if (extension_loaded('zip')) {
-        echo "PHP's Zip extension is installed.";
-    } else {
-        echo "PHP's Zip extension is not installed.";
-    }
-
     error_reporting(E_ALL ^ E_DEPRECATED);
 
     require('libs/spreadsheet/vendor/autoload.php');
     require ('libs/phpword/vendor/autoload.php');
-
 
     use PhpOffice\PhpSpreadsheet\IOFactory as SpreadsheetIOFactory;
     use PhpOffice\PhpWord\IOFactory as WordIOFactory;
@@ -21,14 +14,7 @@
 
     $docReader = WordIOFactory::createReader('Msdoc');
     $docFile = $docReader->load('files/sample.doc');
-
-    $phpWord = new PhpWord();
-    $section = $phpWord->addSection();
-    $section->addText($docFile->getText());
-    $htmlWriter = new \PhpOffice\PhpWord\Writer\HTML($phpWord);
-    $htmlContent = $htmlWriter->save();
-
-    echo $htmlContent;
+    $sections = $docFile->getSections();
 
     $convertXlsxFile = 'files/sample.xlsx';
     $xlsxReader = SpreadsheetIOFactory::createReaderForFile($convertXlsxFile);
@@ -39,7 +25,6 @@
     $csvReader = SpreadsheetIOFactory::createReaderForFile($convertCsvFile);
     $csvSpreadSheet = $csvReader->load($convertCsvFile);
     $csvWorkSheet = $csvSpreadSheet->getActiveSheet();
-
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +42,32 @@
         <h1>Text File</h1>
         <pre><?php readfile($txtFile); ?> </pre>
         <h1>Document File</h1>
+        <div>
+            <?php
+                foreach ($sections as $section) {
+                    // Get all elements of the section
+                    $elements = $section->getElements();
+                    // Loop through all elements of the section
+                    foreach ($elements as $element) {
+                        // Check the type of the element
+                        if ($element instanceof PhpOffice\PhpWord\Element\Text) {
+                            // If it's a text element, echo its text content
+                            echo $element->getText();
+                        } elseif ($element instanceof PhpOffice\PhpWord\Element\Table) {
+                            // If it's a table element, echo its table data
+                            $rows = $element->getRows();
+                            foreach ($rows as $row) {
+                                $cells = $row->getCells();
+                                foreach ($cells as $cell) {
+                                    echo $cell->getText() . "\t";
+                                }
+                                echo "\n";
+                            }
+                        }
+                    }
+                }
+            ?>
+        </div>
         <h1>Excel File</h1>
         <?php
             echo '<table>';
