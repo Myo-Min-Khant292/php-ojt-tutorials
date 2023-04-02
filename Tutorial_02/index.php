@@ -16,6 +16,7 @@
             for ($i = 0; $i < $row; $i++) {
                 $numSpaces = abs($row - 2 * $i - 1) / 2;
                 $numStars = $row - $numSpaces * 2;
+                
                 for ($j = 0; $j < $numSpaces; $j++) {
                     echo "&nbsp ";
                 }

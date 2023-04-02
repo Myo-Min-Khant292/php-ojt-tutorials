@@ -1,0 +1,50 @@
+.test {
+    width: 30%;
+    margin: 100px auto 0 auto;
+}
+
+.img-form {
+    border: 1px solid gray;
+    width: 100%;
+}
+
+.img-form > h1 {
+    text-align: center;
+    padding: 20px 0;
+    background-color: gray;
+    margin-bottom: 20px;
+}
+
+.adj {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.error {
+    color: red;
+}
+
+.error2 {
+    border: 1px solid red;
+}
+
+.btn {
+    display: block;
+    width: 80%;
+    background-color: lightblue;
+    margin: 20px auto;
+}
+
+.test2 {
+    width: 80%;
+    margin: 100px auto 30px auto;
+    padding: 20px 0;
+    background-color: gray;
+}
+
+.img-display-box {
+    background-color: white;
+    width: 90%;
+    margin: 10px auto;
+    height: 50px;
+}
