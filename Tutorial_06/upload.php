@@ -63,7 +63,7 @@
                     }else {    
                         mkdir("images/$folderLocation");
                         $fileDestination = "images/$folderLocation/".$imgName;
-                        if(file_exists("images/$folderLocation")) {
+                        if(file_exists("images/$folderLocation/$imgName")) {
                             $errorBox = "
                                         <div class='alert alert-danger' role='alert'>
                                             You need to change the image or folder name
@@ -78,8 +78,7 @@
                                         </div>
                                         ";
                             header("index.php");
-                        }
-                        
+                        }  
                     }
                 }   
             }
