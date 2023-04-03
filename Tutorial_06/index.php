@@ -5,6 +5,12 @@
     // error_reporting(E_ALL ^ E_DEPRECATED);
 
     include('upload.php');
+
+    $folderDir = "images/";
+    $folderFiles = scandir($folderDir);
+    $folderPath = $_GET['id'];
+    unlink($folderPath);
+    
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +23,14 @@
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Image Upload and Generate</title>
 </head>
 <body>
     <div class="test">
         <?php echo $errorBox; ?>
         <?php echo $success; ?>
 
+        
         <div class="img-form">
             <h1>Upload Image</h1>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
@@ -44,31 +51,38 @@
 
     <div class="container test2">
         <div class="row justify-content-evenly gx-3">
-            <div class="col-4">
-                <div class="img-display-box">
-                </div> 
-            </div>
-            <div class="col-4">
-                <div class="img-display-box">
-                </div> 
-            </div>
-            <div class="col-4">
-                <div class="img-display-box">
-                </div> 
-            </div>
-            <div class="col-4">
-                <div class="img-display-box">
-                </div> 
-            </div>
-            <div class="col-4">
-                <div class="img-display-box">
-                </div> 
-            </div>
-            <div class="col-4">
-                <div class="img-display-box">
-                </div> 
-            </div>
-            
+            <?php foreach($folderFiles as $folderFile) : ?>
+                <?php
+                    if($folderFile == '.') {
+                        continue;
+                    }
+                    if ($folderFile == '..') {
+                        continue;
+                    }
+                    $imageDir = "images/$folderFile";
+                    $imageFiles = scandir($imageDir);
+                ?>
+                <?php foreach($imageFiles as $imageFile) : ?>
+                            <?php
+                                if($imageFile == '.') {
+                                    continue;
+                                }
+                                if ($imageFile == '..') {
+                                    continue;
+                                }
+                                $folderPath = "images/$folderFile/$imageFile";
+                            ?>
+                            <div class="col-4">
+                                <div class="img-display-box">
+                                    <img class="img" src="images/<?php echo $folderFile."/".$imageFile?>" alt="<?php echo $imageFile?>"></img>
+                                    <p class="img-name"><?php echo $imageFile ?></p>
+                                    <p><?php echo $_SERVER['SCRIPT_FILENAME'] . "/images/$folderFile/$imageFile";?></p>
+                                    <a href="index.php?id=<?php echo $folderPath?>" class="destory">Delete</a>
+                                </div> 
+                            </div>     
+                <?php endforeach ?>
+                
+            <?php endforeach ?>  
         </div>
     </div>
 

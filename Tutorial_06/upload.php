@@ -2,7 +2,6 @@
     $errorBox = $success = $folderLocation = $img = $imgName = $imgSize = "";
     $imgType = $imgExt = $actualFileExt = $imgTemp = $fileDestination = $redBorder = "";
     $folderError = $imgError = "";
-    
 
     if(isset($_POST['submit'])) {
         $imgFilter = $_FILES['image'];
@@ -64,13 +63,23 @@
                     }else {    
                         mkdir("images/$folderLocation");
                         $fileDestination = "images/$folderLocation/".$imgName;
-                        move_uploaded_file($imgTemp , $fileDestination);
-                        $success = "
-                                    <div class='alert alert-primary' role='alert'>
-                                        File input successfully 
-                                    </div>
-                                    ";
-                        header("index.php");
+                        if(file_exists("images/$folderLocation")) {
+                            $errorBox = "
+                                        <div class='alert alert-danger' role='alert'>
+                                            You need to change the image or folder name
+                                        </div>
+                                        ";
+                            $redBorder = 'error2';
+                        }else {
+                            move_uploaded_file($imgTemp , $fileDestination);
+                            $success = "
+                                        <div class='alert alert-primary' role='alert'>
+                                            File input successfully 
+                                        </div>
+                                        ";
+                            header("index.php");
+                        }
+                        
                     }
                 }   
             }
@@ -78,11 +87,4 @@
              
         }
     }
-
-    echo $folderLocation . "<br/>";
-    echo $imgName . "<br/>";
-    echo $imgSize . "<br/>";
-    echo $imgType . "<br/>";
-    echo $actualFileExt . "<br/>";
-    echo $fileDestination;
 ?>
