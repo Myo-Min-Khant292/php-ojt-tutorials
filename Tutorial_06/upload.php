@@ -8,33 +8,19 @@
         $folderFilter = $_POST['folder_name'];
 
         if(empty($folderFilter) && !is_uploaded_file($_FILES['image']['tmp_name'])) {
-            $errorBox = "
-                         <div class='alert alert-danger' role='alert'>
-                            You need to put folder name and image
-                        </div>
-                        ";
-            $redBorder = 'error2';
+            $redtBorder = 'error2';
+            $redbBorder = 'error2';
             $folderError = "<p class='error'>Form field is required</p>";
             $imgError = "<p class='error'>You need to insert image</p>";
         }else {
             if(empty($folderFilter)) {
-                $errorBox = "
-                             <div class='alert alert-danger' role='alert'>
-                                You need to put folder name 
-                            </div>
-                            ";
-                $redBorder = 'error2';
+                $redtBorder = 'error2';
                 $folderError = "<p class='error'>Form field is required</p>";
             }else {
                 $folderLocation = $folderFilter; 
                 if(!is_uploaded_file($_FILES['image']['tmp_name'])) {
-                    $errorBox = "
-                                 <div class='alert alert-danger' role='alert'>
-                                    You need to insert img file  
-                                </div>
-                                ";
                     $imgError = "<p class='error'>You need to insert image</p>";
-                    $redBorder = 'error2';
+                    $redbBorder = 'error2';
                 }else {
                     $imgName = $_FILES['image']['name'];
                     $imgTemp = $_FILES['image']['tmp_name'];
@@ -45,31 +31,17 @@
                     $actualFileExt = strtolower(end($imgExt));
                 
                     if(!($actualFileExt == 'jpg' || $actualFileExt == 'jpeg' || $actualFileExt == 'img' || $actualFileExt == 'png')) {
-                        $errorBox = "
-                                 <div class='alert alert-danger' role='alert'>
-                                    You can only insert img files  
-                                </div>
-                                ";
-                        $redBorder = 'error2';
-                        $imgError = "<p class='error'>You need to insert image</p>";
-                    }elseif ($img > 2000) {
-                        $errorBox = "
-                                 <div class='alert alert-danger' role='alert'>
-                                    Files is too large  
-                                </div>
-                                ";
-                        $redBorder = 'error2';
-                        $imgError = "<p class='error'>You need to insert image</p>";
+                        $redbBorder = 'error2';
+                        $imgError = "<p class='error'>You can only inset img format</p>";
+                    }elseif ($imgSize > 2000) {
+                        $redbBorder = 'error2';
+                        $imgError = "<p class='error'>Image size should not be more than 2000</p>";
                     }else {    
                         mkdir("images/$folderLocation");
                         $fileDestination = "images/$folderLocation/".$imgName;
                         if(file_exists("images/$folderLocation/$imgName")) {
-                            $errorBox = "
-                                        <div class='alert alert-danger' role='alert'>
-                                            You need to change the image or folder name
-                                        </div>
-                                        ";
-                            $redBorder = 'error2';
+                            $redbBorder = 'error2';
+                            $imgError = "<p class='error'>You need to change image or folder name</p>";
                         }else {
                             move_uploaded_file($imgTemp , $fileDestination);
                             $success = "

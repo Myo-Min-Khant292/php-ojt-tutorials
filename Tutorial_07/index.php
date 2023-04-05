@@ -1,12 +1,7 @@
 <?php
-    // error_reporting(E_ALL);
-    // ini_set('display_errors', 1);
- 
-    // error_reporting(E_ALL ^ E_DEPRECATED);
-
     include('generate.php');
     $folderDir = "images/";
-    $folderFiles = scandir($folderDir);   
+    $folderFiles = scandir($folderDir);    
 ?>
 
 <!DOCTYPE html>
@@ -23,11 +18,10 @@
 </head>
 <body>
     <div class="test">
-        <?php echo $errorBox; ?>
-        <?php echo $success; ?>
-        
         <div class="img-form">
             <h2>QR Code Generator</h2>
+            <?php echo $success; ?>
+
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                 <div class="mb-3 adj">
                     <label for="formFile" class="form-label">QR Name</label>
@@ -39,7 +33,7 @@
         </div>
     </div>
 
-    <?php echo '<img src="'.$urlRelativeFilePath.'" class="new-qr" />' ?>
+    <?php echo '<img src="'.$urlRelativeFilePath.'" class="'.$imageStyle.'" />' ?>
 
     <div class="container test2">
         <div class="row justify-content-evenly gx-3">

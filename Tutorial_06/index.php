@@ -1,9 +1,4 @@
 <?php
-    // error_reporting(E_ALL);
-    // ini_set('display_errors', 1);
- 
-    // error_reporting(E_ALL ^ E_DEPRECATED);
-
     include('upload.php');
 
     $folderDir = "images/";
@@ -27,21 +22,19 @@
 </head>
 <body>
     <div class="test">
-        <?php echo $errorBox; ?>
         <?php echo $success; ?>
-
         
         <div class="img-form">
             <h1>Upload Image</h1>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                 <div class="mb-3 adj">
                     <label for="formFile" class="form-label">Folder Name</label>
-                    <input class="form-control <?php echo $redBorder ?>" type="text" id="formFile" name="folder_name">
+                    <input class="form-control <?php echo $redtBorder ?>" type="text" id="formFile" name="folder_name">
                     <?php echo $folderError; ?>
                 </div>
                 <div class="mb-3 adj">
                     <label for="formFile" class="form-label">Choose Image</label>
-                    <input class="form-control <?php echo $redBorder ?>" type="file" id="formFile" name="image">
+                    <input class="form-control <?php echo $redbBorder ?>" type="file" id="formFile" name="image">
                     <?php echo $imgError ?>
                 </div>
                 <input type="submit" name="submit" class="btn">
@@ -76,7 +69,7 @@
                                 <div class="img-display-box">
                                     <img class="img" src="images/<?php echo $folderFile."/".$imageFile?>" alt="<?php echo $imageFile?>"></img>
                                     <p class="img-name"><?php echo $imageFile ?></p>
-                                    <p><?php echo $_SERVER['SCRIPT_FILENAME'] . "/images/$folderFile/$imageFile";?></p>
+                                    <p><?php echo $_SERVER['HTTP_HOST'] . "/Tutorial_06/images/$folderFile/$imageFile";?></p>
                                     <a href="index.php?id=<?php echo $folderPath?>" class="destory">Delete</a>
                                 </div> 
                             </div>     

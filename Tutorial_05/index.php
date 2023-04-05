@@ -52,14 +52,14 @@
                         // Check the type of the element
                         if ($element instanceof PhpOffice\PhpWord\Element\Text) {
                             // If it's a text element, echo its text content
-                            echo $element->getText();
+                            echo "<pre>".$element->getText()."</pre>";
                         } elseif ($element instanceof PhpOffice\PhpWord\Element\Table) {
                             // If it's a table element, echo its table data
                             $rows = $element->getRows();
                             foreach ($rows as $row) {
                                 $cells = $row->getCells();
                                 foreach ($cells as $cell) {
-                                    echo $cell->getText() . "\t";
+                                    echo $cell->getText();
                                 }
                                 echo "\n";
                             }
