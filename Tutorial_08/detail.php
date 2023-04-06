@@ -1,5 +1,21 @@
 <?php  
+    include("db.php");
+
+    if(isset($_GET['id'])) {
+        $id = mysqli_real_escape_string($conn , $_GET['id']);
     
+        // make sql
+        $sql = "SELECT * FROM lists WHERE id = $id";
+    
+        // get the query result 
+        $result = mysqli_query($conn , $sql);
+    
+        // fetch result in array format
+        $list = mysqli_fetch_assoc($result);
+    
+        mysqli_free_result($result);
+        mysqli_close($conn);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +35,11 @@
     <div class="container test2">
         <div class="row justify-content-evenly gx-3">
             <h1>Post Detail</h1>
-            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-                <div class="mb-3 adj">
-                    <input type="submit" name="back" class="btn btn-secondary" value="Back">
-                </div>
-            </form>
+            <h2><?php echo $list['title']; ?></h2>
+            <h4><?php echo "Published at " . date('Y-m-d', strtotime($list['created_date'])); ?> </h4>
+            <p><?php echo $list['content']; ?></p>
         </div>
+        <a href="index.php" class="detail-btn">Back</a>
     </div>
 
     <script type="text/javascript" src="libs/bootstrap/js/bootstrap.js"></script>
