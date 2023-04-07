@@ -23,7 +23,4 @@
     // } else {
     //     echo "Table already created";
     // }
-
-    //close connection
-    // mysqli_close($conn);
 ?>

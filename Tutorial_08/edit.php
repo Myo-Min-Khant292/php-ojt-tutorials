@@ -5,9 +5,14 @@
     error_reporting(E_ALL ^ E_DEPRECATED);
     include("db.php");
 
+    $titleError = $contentError = "";
+
     if(isset($_GET['id'])) {
         $id = mysqli_real_escape_string($conn , $_GET['id']);
-    
+        echo $id . "</br>";
+    }
+
+    if(isset($id)) {
         // make sql
         $sql = "SELECT id , title , content , published , update_date FROM lists WHERE id = $id";
     
@@ -16,38 +21,53 @@
     
         // fetch result in array format
         $list = mysqli_fetch_assoc($result);
-        $title = $list['title'];
-        $content = $list['content'];
-
-        if(isset($_POST['update'])) {
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            echo $title . "</br>";
-            echo $content . "</br>";
-            echo "I clicked update";
-        }else {
-            echo 'This is error'."</br>";
-        }
-    
-        mysqli_free_result($result);
-        mysqli_close($conn);
+        $displayTitle = $list['title'];
+        $displayContent = $list['content'];
+        $fetchId = $list['id'];
     }
 
-    // $id = mysqli_real_escape_string($conn , $_GET['id']);
-    // echo $id . "</br>";
+    if(isset($_POST['update'])) {
+        $fetch = mysqli_real_escape_string($conn , $_POST['fetchId']);
+        $title = mysqli_real_escape_string($conn , $_POST['title']);
+        $content = mysqli_real_escape_string($conn , $_POST['content']);
+        if (empty($_POST['publish'])) {
+            $publish = mysqli_real_escape_string($conn , 'Unpublished');
+        }else {
+            $publish = mysqli_real_escape_string($conn , 'Published');
+        }
+
+        if (empty($title) && empty($content)) {
+            $redtBorder = 'error2';
+            $redbBorder = 'error2';
+            $titleError = "<p class='error'>Title field is required</p>";
+            $contentError = "<p class='error'>Content field is required</p>";
+            $displayTitle = "";
+            $displayContent = "";
+        }elseif (empty($title)) {
+            $redtBorder = 'error2';
+            $titleError = "<p class='error'>Title field is required</p>";
+            $displayTitle = "";
+            $displayContent = $content;
+        }elseif (empty($content)) {
+            $redbBorder = 'error2';
+            $contentError = "<p class='error'>Content field is required</p>";
+            $displayContent = "";
+            $displayTitle =  $title;
+        }else {
+            // Update sql
+            $updateSql = "UPDATE lists SET title = '$title' , content = '$content' , published = '$publish' WHERE id = $fetch";
         
-    // if(isset($_POST['update'])) {
-    //     $title = $_POST['title'];
-    //     $content = $_POST['content'];
-    //     echo $title . "</br>";
-    //     echo $content . "</br>";
-    // }else {
-    //     echo "something wrong". "</br>";
-    // }
-
-    
-
-    
+            // save to database and check
+            if(mysqli_query($conn , $updateSql)) {
+                //success
+                header('Location: index.php');
+            }else {
+                //error
+                echo 'query error' . mysqli_error($conn);
+            }
+        }
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,15 +88,19 @@
         <div class="row justify-content-evenly gx-3">
             <h1>Edit Post</h1>
             <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
+            
                 <div class="mb-3 adj">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control" id="exampleFormControlInput1" value="<?php echo $title; ?>">
+                    <input type="text" name="title" class="form-control <?php echo $redtBorder;?>" id="exampleFormControlInput1" value="<?php echo $displayTitle; ?>">
+                    <input type="hidden" name="fetchId" class="form-control <?php echo $redtBorder;?>" id="exampleFormControlInput1" value="<?php echo $fetchId; ?>">
+                    <?php echo $titleError; ?>
                 </div>
                 <div class="mb-3 adj">
                     <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">
-                        <?php echo $content;?>
+                    <textarea class="form-control <?php echo $redbBorder;?>" name="content" id="exampleFormControlTextarea1" rows="3">
+                        <?php echo $displayContent;?>
                     </textarea>
+                    <?php echo $contentError; ?>
                 </div>
                 <div class="mb-3 form-check adj">
                     <input type="checkbox" name="publish" class="form-check-input" id="exampleCheck1">
