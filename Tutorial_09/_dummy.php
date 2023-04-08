@@ -6,6 +6,13 @@
     
     $test = count($lists);
 
+    /**
+     * Function for generate title
+     *
+     * 
+     * @return string $randomTitle
+     */
+
     function generateRandomTitle() {
         $characters = 'abcdefghijklmnopqrstuvwxyz';
         
@@ -13,6 +20,13 @@
         $randomTitle = ucfirst($function);
         return $randomTitle."</br>";
     }
+
+    /**
+     * Function for generate content
+     *
+     * 
+     * @return string $randomcontent
+     */
 
     function generateRandomContent() {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -23,17 +37,34 @@
         }
         return $RandomContent."</br>"; 
     }
+
+    /**
+     * Function for generate datetime
+     *
+     * 
+     * @return string $storeTimeStamp
+     */
+
+    function generateRandomDateTime() {
+        $startDate = strtotime("2023-01-01");
+        $endDate = strtotime("2023-12-31");
+
+        $randomTimeStamp = rand($startDate, $endDate);
+        $storeTimeStamp = date("Y-m-d H:i:s", $randomTimeStamp);
+        return $storeTimeStamp;
+    }
     
     for($test ; $test <= 100 ; $test++) {
         $title = generateRandomTitle();
         $content = generateRandomContent();
         $publish = 'Published';
+        $time = generateRandomDateTime();
 
-        $randomItemSql = "INSERT INTO lists(title, content, published) VALUES('$title', '$content' , '$publish')";
+        $randomItemSql = "INSERT INTO lists(title, content, published , created_date) VALUES('$title', '$content' , '$publish' , '$time')";
 
         if(mysqli_query($conn , $randomItemSql)) {
             //success
-            echo "Create Successfully";
+            
         }else {
             //error
             echo 'query error' . mysqli_error($conn);

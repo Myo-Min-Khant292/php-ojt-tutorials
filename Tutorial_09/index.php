@@ -56,6 +56,7 @@
 </head>
 <body>
     <a href="create.php" class="btn btn-primary create">Create</a>
+    <a href="graph/_yearly.php" class="btn btn-primary graph">Graph</a>
     <div class="container test2">
         <div class="row justify-content-evenly gx-3">
             <h1>Post Lists</h1>

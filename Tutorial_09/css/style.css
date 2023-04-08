@@ -40,6 +40,14 @@
     top: 50px;
     left: 90px;
   }
+
+  .graph {
+    background-color: rgb(10, 101, 238);
+    color: white;
+    position: absolute;
+    top: 50px;
+    left: 180px;
+  }
   
   .view {
     background-color: rgb(59, 141, 168);
@@ -108,6 +116,36 @@
     text-decoration: none;
     border-radius: 5px;
     margin-left: 30px;
+  }
+
+  /* for graph */
+  .for-btn {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  .graph-btn {
+    float: right;
+    color: gray;
+    border: 1px solid #5c636a;
+    margin: 0 5px;
+  }
+
+  .graph-btn:hover {
+    background-color: #5c636a;
+    color: white;
+  }
+
+  .active {
+    background-color: #5c636a !important;
+    color: white !important;
+  }
+
+  .graph-box {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 70px;
   }
   
   
