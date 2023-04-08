@@ -1,0 +1,113 @@
+/* For all */
+.test2 {
+    margin: 100px auto 30px auto;
+    padding: 0 0 20px 0;
+    border: 1px solid black;
+  }
+  
+  .test2 h1 {
+    width: 98.8%;
+    padding: 20px 0 30px 30px;
+    border-bottom: 1px solid black;
+    border-width: 90%;
+    background-color: rgb(193, 193, 193);
+  }
+  
+  .adj {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .error2 {
+    border: 1px solid red;
+  }
+  
+  /* for index.php */
+  
+  .list {
+    width: 95%;
+    margin: 20px 0 0 0;
+  }
+  
+  .create {
+    background-color: rgb(10, 101, 238);
+    color: white;
+    position: absolute;
+    top: 50px;
+    left: 90px;
+  }
+  
+  .view {
+    background-color: rgb(59, 141, 168);
+    border : 1px solid rgb(59, 141, 168);
+    border-radius: 5px;
+  }
+  
+  .edit {
+    background-color: rgb(17, 145, 36);
+    border : 1px solid rgb(17, 145, 36);
+    border-radius: 5px;
+  }
+  
+  .delete {
+    background-color: rgb(227, 34, 34);
+    border : 1px solid rgb(227, 34, 34);
+    border-radius: 5px;
+  }
+  
+  .alert-box {
+    width: 20%;
+    margin: 0px auto;
+    background-color: gray;
+  }
+  
+  .cancel {
+    float: right;
+  }
+  
+  .none {
+    display: none;
+  }
+  
+  .block {
+    display: block !important;
+  }
+  
+  /* for create.php */
+  
+  .right {
+    float: right;
+  }
+  
+  /* for detail.php */
+  
+  .row > h2 {
+    margin-left: 50px;
+  }
+  
+  .row > h4 {
+    margin-left: 50px;
+  }
+  
+  .row > p {
+    width: 96%;
+    word-wrap: break-word;
+    margin: 10px 0;
+  }
+  
+  .detail-btn {
+    color: white;
+    background-color: gray;
+    width: 60px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 30px;
+  }
+  
+  

@@ -59,6 +59,24 @@
   border-radius: 5px;
 }
 
+.alert-box {
+  width: 20%;
+  margin: 0px auto;
+  background-color: gray;
+}
+
+.cancel {
+  float: right;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block !important;
+}
+
 /* for create.php */
 
 .right {

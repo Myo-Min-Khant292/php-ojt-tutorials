@@ -15,8 +15,8 @@
     // fetch the resulting row as an array
     $lists = mysqli_fetch_all($results , MYSQLI_ASSOC);
 
-    // Check if the item deletion form is submitted
-    if (isset($_POST['delete'])) {
+     // Check if the item deletion form is submitted
+     if (isset($_POST['delete'])) {
         $idNo = $_POST['item_id'];
         $sql = "DELETE FROM lists WHERE id = $idNo";
 
@@ -28,7 +28,7 @@
 
         // redirect back to the list page
         header("Location: index.php");
-    }    
+    }
 
     // free results from memory
     mysqli_free_result($results);
@@ -82,7 +82,7 @@
                                     <input type='hidden' name='item_id' value='<?php echo $list['id']; ?>'>
                                     <a href="detail.php?id=<?php echo $list['id']; ?>" class="btn btn-primary view">View</a>
                                     <a href="edit.php?id=<?php echo $list['id']; ?>" class="btn btn-primary edit">Edit</a>
-                                    <button type="submit" name="delete" class="btn btn-primary delete" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>    
+                                    <button type="submit" name="delete" class="btn btn-primary delete">Delete</button>
                                 </form>
                             </td>                       
                         </tr>
