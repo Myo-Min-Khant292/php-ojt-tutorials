@@ -5,6 +5,7 @@
     error_reporting(E_ALL ^ E_DEPRECATED);
     
     include("db.php");
+    
 
     // write query for all lists
     $sql = "SELECT id , title , content , published , created_date FROM lists ORDER BY id";
@@ -14,6 +15,10 @@
 
     // fetch the resulting row as an array
     $lists = mysqli_fetch_all($results , MYSQLI_ASSOC);
+
+    // print_r($lists);
+
+    include("_dummy.php");
 
      // Check if the item deletion form is submitted
      if (isset($_POST['delete'])) {

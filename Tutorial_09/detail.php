@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Create</title>
+    <title>View</title>
 </head>
 <body>
 

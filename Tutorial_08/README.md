@@ -53,7 +53,7 @@ README.md
 
 ## Post Detail Design
 
-![post_detial.png](demo/post_detial.png)
+![post_detail.png](demo/post_detail.png)
 
 ## Post Edit Design
 
