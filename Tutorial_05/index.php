@@ -12,9 +12,13 @@
 
     $txtFile = 'files/sample.txt';
 
-    $docReader = WordIOFactory::createReader('Msdoc');
-    $docFile = $docReader->load('files/sample.doc');
-    $sections = $docFile->getSections();
+    $objReader = \PhpOffice\PhpWord\IOFactory::createReader("Msdoc");
+    $phpWord = $objReader->load("files/sample.doc");
+    $sections = $phpWord->getSections();
+
+    // Save the document as HTML
+    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord , 'HTML');
+    
 
     $convertXlsxFile = 'files/sample.xlsx';
     $xlsxReader = SpreadsheetIOFactory::createReaderForFile($convertXlsxFile);
@@ -45,28 +49,13 @@
         <div>
             <?php
                 foreach ($sections as $section) {
-                    // Get all elements of the section
-                    $elements = $section->getElements();
-                    // Loop through all elements of the section
-                    foreach ($elements as $element) {
-                        // Check the type of the element
-                        if ($element instanceof PhpOffice\PhpWord\Element\Text) {
-                            // If it's a text element, echo its text content
-                            echo "<pre>".$element->getText()."</pre>";
-                        } elseif ($element instanceof PhpOffice\PhpWord\Element\Table) {
-                            // If it's a table element, echo its table data
-                            $rows = $element->getRows();
-                            foreach ($rows as $row) {
-                                $cells = $row->getCells();
-                                foreach ($cells as $cell) {
-                                    echo $cell->getText();
-                                }
-                                echo "\n";
-                            }
-                        }
+                    $paragraphs = $section->getElements();
+                    foreach ($paragraphs as $paragraph) {
+                        $text = $paragraph->getText();
+                        echo $text . "<br>";
                     }
                 }
-            ?>
+            ?> 
         </div>
         <h1>Excel File</h1>
         <?php

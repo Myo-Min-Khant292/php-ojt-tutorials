@@ -26,6 +26,8 @@
         return $user;
     }
 
+    
+
     $MondayUser = weeklyUser(1);
     $TuesdayUser = weeklyUser(2);
     $WednesdayUser = weeklyUser(3);

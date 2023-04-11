@@ -3,9 +3,7 @@
     ini_set('display_errors', 1);
 
     error_reporting(E_ALL ^ E_DEPRECATED);
-    
     include("db.php");
-    
 
     // write query for all lists
     $sql = "SELECT id , title , content , published , created_date FROM lists ORDER BY id";
@@ -88,7 +86,7 @@
                                     <input type='hidden' name='item_id' value='<?php echo $list['id']; ?>'>
                                     <a href="detail.php?id=<?php echo $list['id']; ?>" class="btn btn-primary view">View</a>
                                     <a href="edit.php?id=<?php echo $list['id']; ?>" class="btn btn-primary edit">Edit</a>
-                                    <button type="submit" name="delete" class="btn btn-primary delete">Delete</button>
+                                    <button type="submit" name="delete" class="btn btn-primary delete" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
                                 </form>
                             </td>                       
                         </tr>

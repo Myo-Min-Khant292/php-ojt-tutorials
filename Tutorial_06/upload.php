@@ -7,6 +7,7 @@
         $imgFilter = $_FILES['image'];
         $folderFilter = $_POST['folder_name'];
 
+
         if(empty($folderFilter) && !is_uploaded_file($_FILES['image']['tmp_name'])) {
             $redtBorder = 'error2';
             $redbBorder = 'error2';

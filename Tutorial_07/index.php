@@ -1,7 +1,7 @@
 <?php
     include('generate.php');
     $folderDir = "images/";
-    $folderFiles = scandir($folderDir);    
+    $folderFiles = scandir($folderDir); 
 ?>
 
 <!DOCTYPE html>

@@ -14,7 +14,7 @@
     //     title VARCHAR(255) NOT NULL,
     //     content TEXT NOT NULL,
     //     published VARCHAR(50),
-    //     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    //     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     //     update_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     // )";
 

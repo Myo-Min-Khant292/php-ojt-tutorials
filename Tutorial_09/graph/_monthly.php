@@ -23,7 +23,7 @@
 
     function monthlyUser($month) {
         global $conn;
-        $sql = "SELECT * FROM lists WHERE DATE(created_date) = $month";
+        $sql = "SELECT * FROM lists WHERE DATE_FORMAT(created_date, '%Y-%m-%d') = '$month'";
 
         $results = mysqli_query($conn , $sql);
         $lists = mysqli_fetch_all($results , MYSQLI_ASSOC);
@@ -32,8 +32,10 @@
         return $user;
     }
 
-    $monthlyUser = monthlyUser("2023-4-8");
-    echo $monthlyUser;
+    for ($i = 1; $i <= 30; $i++) {
+        ${"monthlyUser$i"} = monthlyUser("2023-04-$i");
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -66,36 +68,36 @@
     <script>
         (async function() {
             const data = [
-                { week: '<?php echo $datesOfMonth[0];?>', count: <?php echo $monthlyUser; ?> },
-                { week: '<?php echo $datesOfMonth[1];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[2];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[3];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[4];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[5];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[6];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[7];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[8];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[9];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[10];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[11];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[12];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[13];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[14];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[15];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[16];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[17];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[18];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[19];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[20];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[21];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[22];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[23];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[24];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[25];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[26];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[27];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[28];?>', count: 10 },
-                { week: '<?php echo $datesOfMonth[29];?>', count: 10 },
+                { week: '<?php echo $datesOfMonth[0];?>', count: <?php echo $monthlyUser1; ?> },
+                { week: '<?php echo $datesOfMonth[1];?>', count: <?php echo $monthlyUser2; ?> },
+                { week: '<?php echo $datesOfMonth[2];?>', count: <?php echo $monthlyUser3; ?> },
+                { week: '<?php echo $datesOfMonth[3];?>', count: <?php echo $monthlyUser4; ?> },
+                { week: '<?php echo $datesOfMonth[4];?>', count: <?php echo $monthlyUser5; ?> },
+                { week: '<?php echo $datesOfMonth[5];?>', count: <?php echo $monthlyUser6; ?> },
+                { week: '<?php echo $datesOfMonth[6];?>', count: <?php echo $monthlyUser7; ?> },
+                { week: '<?php echo $datesOfMonth[7];?>', count: <?php echo $monthlyUser8; ?> },
+                { week: '<?php echo $datesOfMonth[8];?>', count: <?php echo $monthlyUser9; ?> },
+                { week: '<?php echo $datesOfMonth[9];?>', count: <?php echo $monthlyUser10; ?>},
+                { week: '<?php echo $datesOfMonth[10];?>', count: <?php echo $monthlyUser11; ?>},
+                { week: '<?php echo $datesOfMonth[11];?>', count: <?php echo $monthlyUser12; ?>},
+                { week: '<?php echo $datesOfMonth[12];?>', count: <?php echo $monthlyUser13; ?>},
+                { week: '<?php echo $datesOfMonth[13];?>', count: <?php echo $monthlyUser14; ?>},
+                { week: '<?php echo $datesOfMonth[14];?>', count: <?php echo $monthlyUser15; ?>},
+                { week: '<?php echo $datesOfMonth[15];?>', count: <?php echo $monthlyUser16; ?>},
+                { week: '<?php echo $datesOfMonth[16];?>', count: <?php echo $monthlyUser17; ?>},
+                { week: '<?php echo $datesOfMonth[17];?>', count: <?php echo $monthlyUser18; ?>},
+                { week: '<?php echo $datesOfMonth[18];?>', count: <?php echo $monthlyUser19; ?>},
+                { week: '<?php echo $datesOfMonth[19];?>', count: <?php echo $monthlyUser20; ?>},
+                { week: '<?php echo $datesOfMonth[20];?>', count: <?php echo $monthlyUser21; ?>},
+                { week: '<?php echo $datesOfMonth[21];?>', count: <?php echo $monthlyUser22; ?>},
+                { week: '<?php echo $datesOfMonth[22];?>', count: <?php echo $monthlyUser23; ?>},
+                { week: '<?php echo $datesOfMonth[23];?>', count: <?php echo $monthlyUser24; ?>},
+                { week: '<?php echo $datesOfMonth[24];?>', count: <?php echo $monthlyUser25; ?>},
+                { week: '<?php echo $datesOfMonth[25];?>', count: <?php echo $monthlyUser26; ?>},
+                { week: '<?php echo $datesOfMonth[26];?>', count: <?php echo $monthlyUser27; ?>},
+                { week: '<?php echo $datesOfMonth[27];?>', count: <?php echo $monthlyUser28; ?>},
+                { week: '<?php echo $datesOfMonth[28];?>', count: <?php echo $monthlyUser29; ?>},
+                { week: '<?php echo $datesOfMonth[29];?>', count: <?php echo $monthlyUser30; ?>},
                 
             ];
 
