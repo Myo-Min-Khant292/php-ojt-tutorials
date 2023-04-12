@@ -11,6 +11,12 @@
     $results = mysqli_query($conn , $sql);
     $users = mysqli_fetch_all($results , MYSQLI_ASSOC);
 
+    $imgsql = "SELECT image FROM users WHERE email = '$email'";
+    $img = mysqli_query($conn , $imgsql);
+    $imgUser = mysqli_fetch_assoc($img);
+    print_r($imgUser);
+    $_SESSION['image'] = $imgUser["image"] ?? "default_img.png";
+
     if (isset($_POST['logout'])) {
         session_destroy();
         header('Location: index.php');
@@ -36,7 +42,7 @@
             <div class="right">
                 <?php if(isset($_SESSION['email'])) : ?>
                     <div class="user_email">
-                        <?php echo $_SESSION['email']?>
+                        <img src="images/<?php echo $_SESSION['image']?>" class="user_img2">
                         <ul class="list-group detail">
                             <li class="list-group-item">
                                 <a href="auth/profile.php?id=<?php echo $users[0]['id']; ?>" class="">Profile</a>

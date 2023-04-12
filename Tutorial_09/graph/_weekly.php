@@ -63,7 +63,7 @@
 
     <script type="text/javascript" src="../libs/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../libs/chart.js/dist/chart.umd.js"></script>
     <script>
         (async function() {
             const data = [
