@@ -14,7 +14,6 @@
     $imgsql = "SELECT image FROM users WHERE email = '$email'";
     $img = mysqli_query($conn , $imgsql);
     $imgUser = mysqli_fetch_assoc($img);
-    print_r($imgUser);
     $_SESSION['image'] = $imgUser["image"] ?? "default_img.png";
 
     if (isset($_POST['logout'])) {

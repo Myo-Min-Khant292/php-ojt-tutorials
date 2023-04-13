@@ -4,9 +4,9 @@
 
     error_reporting(E_ALL ^ E_DEPRECATED);
     include("../db.php");
-    // session_start();
+    session_start();
 
-    // $email = $_SESSION['email'];
+    $email = $_SESSION['email'];
 
     $emailError = $pwdError = $confirmPwdError = "";
     $sql = "SELECT email , password from users";
@@ -76,7 +76,7 @@
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
             <div class="mb-3 adj">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control <?php echo $redborder ?>" id="email" >
+                <input type="email" name="email" class="form-control <?php echo $redborder ?>" id="email" value="<?php echo $email; ?>" readonly>
                 <p class="error"><?php echo $emailError; ?></p>
             </div>
             <div class="mb-3 adj">
