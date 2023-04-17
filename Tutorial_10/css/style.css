@@ -142,9 +142,15 @@
   }
 
   .img_upload {
-    width: 50%;
-    float: left;
-    margin: 30px 20px;
+    display: none;
+  }
+
+  .upload {
+    margin: 40px 40px 20px 40px;
+    color: rgba(14, 53, 210, 0.804);
+    border:1px solid rgb(0, 157, 255);
+    border-radius: 10px;
+    padding: 10px 20px;
   }
   
   

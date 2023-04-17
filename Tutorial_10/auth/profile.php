@@ -92,7 +92,8 @@
             <div class="mb-3 adj clearfix">
                 <input type="hidden" name="fetchId" class="form-control" id="exampleFormControlInput1" value="<?php echo $fetchId ; ?>">
                 <img class="user_img" src="../images/<?php echo $img;?>">
-                <input type="file" name="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
+                <label for="image" class="form-label upload">Upload</label>
+                <input type="file" name="image" id="image" class="form-control img_upload" accept=".jpg, .jpeg, .png, image/*">
                 <p class="error"><?php echo $imgError ?></p>
             </div>
             <div class="mb-3 adj">

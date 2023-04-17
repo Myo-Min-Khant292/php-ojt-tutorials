@@ -37,14 +37,13 @@
         $mail->SMTPSecure='tls';
 
         // h-hotel account
-        $mail->Username='stormfire873@gmail.com';
-        $mail->Password='tnceyahuzhkjhbbs';
+        $mail->Username='myominkhant1287@gmail.com';
+        $mail->Password='rdmfffxdawugceah';
 
         // send by h-hotel email
-        $mail->setFrom('stormfire873@gmail.com', 'Password Reset');
+        $mail->setFrom('myominkhant1287@gmail.com', 'Password Reset');
         // get email from input
         $mail->addAddress($email);
-        //$mail->addReplyTo('lamkaizhe16@gmail.com');
 
         // HTML body
         $mail->isHTML(true);
