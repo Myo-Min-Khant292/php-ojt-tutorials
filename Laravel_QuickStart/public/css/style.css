@@ -1,0 +1,20 @@
+.task {
+    width: 30%;
+    margin: 20px auto;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.task > h3 {
+    padding: 0 10px;
+    background-color: lightgray;
+}
+
+.task > p {
+    border-bottom: 2px solid lightgray;
+}
+
+.error-text {
+    color: red;
+}
