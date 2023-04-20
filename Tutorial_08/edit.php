@@ -1,4 +1,4 @@
-<?php  
+<?php 
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
@@ -36,7 +36,7 @@
         }else {
             $publish = mysqli_real_escape_string($conn , 'Published');
         }
-
+        
         if (empty($title) && empty($content)) {
             header("Location:edit.php?id=$fetch");
             $redtBorder = 'error2';
@@ -71,7 +71,6 @@
                 echo 'query error' . mysqli_error($conn);
             }
         }
-        
     }
 ?>
 
@@ -92,7 +91,7 @@
     <div class="container test2">
         <div class="row justify-content-evenly gx-3">
             <h1>Edit Post</h1>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
+            <form action="<?php echo $_SERVER['PHP_SELF'].'?id=' . $id ;?>" method="post">
                 <div class="mb-3 adj">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
                     <input type="text" name="title" class="form-control <?php echo $redtBorder;?>" id="exampleFormControlInput1" value="<?php echo $displayTitle; ?>">

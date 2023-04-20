@@ -23,6 +23,7 @@
         $list = mysqli_fetch_assoc($result);
         $displayTitle = $list['title'];
         $displayContent = $list['content'];
+        $displayPublish = $list['published'];
         $fetchId = $list['id'];
     }
 
@@ -88,7 +89,7 @@
     <div class="container test2">
         <div class="row justify-content-evenly gx-3">
             <h1>Edit Post</h1>
-            <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
+            <form action="<?php echo $_SERVER['PHP_SELF'].'?id=' . $id ;?>" method="post">
             
                 <div class="mb-3 adj">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
