@@ -1,52 +1,54 @@
 /* For all */
 .test2 {
-    margin: 100px auto 30px auto;
-    padding: 0 0 20px 0;
-    border: 1px solid black;
-  }
-  
-  .test2 h1 {
-    width: 98.8%;
-    padding: 20px 0 30px 30px;
-    border-bottom: 1px solid black;
-    border-width: 90%;
-    background-color: rgb(193, 193, 193);
-  }
-  
-  .adj {
-    width: 90%;
-    margin: 0 auto;
-  }
-  
-  .error {
-    color: red;
-  }
-  
-  .error2 {
-    border: 1px solid red;
-  }
-  
-  /* for index.php */
-  
-  .list {
-    width: 95%;
-    margin: 20px 0 0 0;
-  }
-  
-  .create {
-    background-color: rgb(10, 101, 238);
-    color: white;
-    position: absolute;
-    top: 50px;
-    left: 90px;
-  }
+  margin: 100px auto 30px auto;
+  padding: 0 0 20px 0;
+  border: 1px solid black;
+  width: 80%;
+}
+
+.test2 h1 {
+  width: 98.8%;
+  padding: 20px 0 30px 30px;
+  border-bottom: 1px solid black;
+  border-width: 90%;
+  background-color: rgb(193, 193, 193);
+  font-size: 30px;
+}
+
+.adj {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.error {
+  color: red;
+}
+
+.error2 {
+  border: 1px solid red;
+}
+
+/* for index.php */
+
+.list {
+  width: 95%;
+  margin: 20px 0 0 0;
+}
+
+.create {
+  background-color: rgb(10, 101, 238);
+  color: white;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+}
 
   .graph {
     background-color: rgb(10, 101, 238);
     color: white;
     position: absolute;
     top: 50px;
-    left: 180px;
+    left: 250px;
   }
   
   .view {

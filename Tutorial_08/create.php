@@ -6,22 +6,23 @@
 
     include("db.php");
     $titleError = $contentError = "";
+    $title = $content = "";
 
     if(isset($_POST['create'])) {
+        $title = mysqli_real_escape_string($conn , $_POST['title']);
+        $content = mysqli_real_escape_string($conn , $_POST['content']);
         if (empty($_POST['title']) && empty($_POST['content'])) {
             $redtBorder = 'error2';
             $redbBorder = 'error2';
-            $titleError = "<p class='error'>Title field is required</p>";
-            $contentError = "<p class='error'>Content field is required</p>";
+            $titleError = "Title field is required";
+            $contentError = "Content field is required";
         }elseif (empty($_POST['title'])) {
             $redtBorder = 'error2';
-            $titleError = "<p class='error'>Title field is required</p>";
+            $titleError = "Title field is required";
         }elseif (empty($_POST['content'])) {
             $redbBorder = 'error2';
-            $contentError = "<p class='error'>Content field is required</p>";
+            $contentError = "Content field is required";
         }else {
-            $title = mysqli_real_escape_string($conn , $_POST['title']);
-            $content = mysqli_real_escape_string($conn , $_POST['content']);
             if (empty($_POST['publish'])) {
                 $publish = mysqli_real_escape_string($conn , 'Unpublished');
             }else {
@@ -63,13 +64,13 @@
             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                 <div class="mb-3 adj">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control <?php echo $redtborder ?>" id="exampleFormControlInput1" placeholder="name@example.com">
-                    <?php echo $titleError; ?>
+                    <input type="text" name="title" class="form-control <?php echo $redtborder ?>" id="exampleFormControlInput1" value="<?php echo $title ?>" placeholder="name@example.com">
+                    <p class='error'><?php echo $titleError; ?></p>
                 </div>
                 <div class="mb-3 adj">
                     <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-                    <textarea class="form-control <?php echo $redbborder ?>" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    <?php echo $contentError; ?>
+                    <textarea class="form-control <?php echo $redbborder ?>" name="content" id="exampleFormControlTextarea1" rows="3"><?php echo $content ?></textarea>
+                    <p class='error'><?php echo $contentError; ?></p>
                 </div>
                 <div class="mb-3 form-check adj">
                     <input type="checkbox" name="publish" class="form-check-input" id="exampleCheck1">

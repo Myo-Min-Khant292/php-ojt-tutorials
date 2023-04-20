@@ -35,7 +35,7 @@
           $randomIndex = rand(0, strlen($characters) - 1);
           $RandomContent .= $characters[$randomIndex];
         }
-        return $RandomContent."</br>"; 
+        return $RandomContent; 
     }
 
     /**
@@ -54,22 +54,22 @@
         return $storeTimeStamp;
     }
     
-    // for($test ; $test <= 100 ; $test++) {
-    //     $title = generateRandomTitle();
-    //     $content = generateRandomContent();
-    //     $publish = 'Published';
-    //     $time = generateRandomDateTime();
+    for($test ; $test <= 100 ; $test++) {
+        $title = generateRandomTitle();
+        $content = generateRandomContent();
+        $publish = 'Published';
+        $time = generateRandomDateTime();
 
-    //     $randomItemSql = "INSERT INTO lists(title, content, published , created_date) VALUES('$title', '$content' , '$publish' , '$time')";
+        $randomItemSql = "INSERT INTO lists(title, content, published , created_date) VALUES('$title', '$content' , '$publish' , '$time')";
 
-    //     if(mysqli_query($conn , $randomItemSql)) {
-    //         //success
+        if(mysqli_query($conn , $randomItemSql)) {
+            //success
             
-    //     }else {
-    //         //error
-    //         echo 'query error' . mysqli_error($conn);
-    //     }
-    // }
+        }else {
+            //error
+            echo 'query error' . mysqli_error($conn);
+        }
+    }
 
     
 ?>

@@ -9,7 +9,6 @@
 
     if(isset($_GET['id'])) {
         $id = mysqli_real_escape_string($conn , $_GET['id']);
-        echo $id . "</br>";
     }
 
     if(isset($id)) {
@@ -23,13 +22,15 @@
         $list = mysqli_fetch_assoc($result);
         $displayTitle = $list['title'];
         $displayContent = $list['content'];
+        $displayPublish = $list['published'];
         $fetchId = $list['id'];
     }
 
     if(isset($_POST['update'])) {
         $fetch = mysqli_real_escape_string($conn , $_POST['fetchId']);
         $title = mysqli_real_escape_string($conn , $_POST['title']);
-        $content = mysqli_real_escape_string($conn , $_POST['content']);
+        $rawContent = mysqli_real_escape_string($conn , $_POST['content']);
+        $content = trim($rawContent);
         if (empty($_POST['publish'])) {
             $publish = mysqli_real_escape_string($conn , 'Unpublished');
         }else {
@@ -39,20 +40,23 @@
         if (empty($title) && empty($content)) {
             $redtBorder = 'error2';
             $redbBorder = 'error2';
-            $titleError = "<p class='error'>Title field is required</p>";
-            $contentError = "<p class='error'>Content field is required</p>";
+            $titleError = "Title field is required";
+            $contentError = "Content field is required";
             $displayTitle = "";
             $displayContent = "";
+            header("Location:edit.php?id=$fetch");
         }elseif (empty($title)) {
             $redtBorder = 'error2';
-            $titleError = "<p class='error'>Title field is required</p>";
+            $titleError = "Title field is required";
             $displayTitle = "";
             $displayContent = $content;
+            header("Location:edit.php?id=$fetch");
         }elseif (empty($content)) {
             $redbBorder = 'error2';
-            $contentError = "<p class='error'>Content field is required</p>";
+            $contentError = "Content field is required";
             $displayContent = "";
             $displayTitle =  $title;
+            header("Location:edit.php?id=$fetch");
         }else {
             // Update sql
             $updateSql = "UPDATE lists SET title = '$title' , content = '$content' , published = '$publish' WHERE id = $fetch";
@@ -88,27 +92,26 @@
         <div class="row justify-content-evenly gx-3">
             <h1>Edit Post</h1>
             <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
-            
                 <div class="mb-3 adj">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
                     <input type="text" name="title" class="form-control <?php echo $redtBorder;?>" id="exampleFormControlInput1" value="<?php echo $displayTitle; ?>">
                     <input type="hidden" name="fetchId" class="form-control <?php echo $redtBorder;?>" id="exampleFormControlInput1" value="<?php echo $fetchId; ?>">
-                    <?php echo $titleError; ?>
+                    <p class='error'><?php echo $titleError; ?></p>
                 </div>
                 <div class="mb-3 adj">
                     <label for="exampleFormControlTextarea1" class="form-label">Content</label>
                     <textarea class="form-control <?php echo $redbBorder;?>" name="content" id="exampleFormControlTextarea1" rows="3">
                         <?php echo $displayContent;?>
                     </textarea>
-                    <?php echo $contentError; ?>
+                    <p class='error'><?php echo $contentError; ?></p>
                 </div>
                 <div class="mb-3 form-check adj">
-                    <input type="checkbox" name="publish" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" name="publish" class="form-check-input" id="exampleCheck1" <?php if($displayPublish == 'Published') echo 'checked'; ?>>
                     <label class="form-check-label" for="exampleCheck1">Publish</label>
                 </div>
                 <div class="mb-3 adj">
                     <a href="index.php" class="btn btn-secondary">Back</a>
-                    <input type="submit" name="update" class="btn btn-primary right" value="Update">
+                    <input type="submit" name="update"  class="btn btn-primary right" value="Update">
                 </div>
             </form>
         </div>

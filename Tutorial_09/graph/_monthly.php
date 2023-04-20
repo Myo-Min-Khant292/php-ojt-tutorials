@@ -5,6 +5,15 @@
     error_reporting(E_ALL ^ E_DEPRECATED);
     include("../db.php");
 
+    $year = date('Y');
+    $month = date('m');
+    $num_days = date('t', strtotime("$year-$month-01"));
+    $date = [];
+    for($day = 1; $day <= $num_days; $day++){
+        array_push($date , date("$year-$month-$day"));
+    }
+    print_r($date);
+    
     $datesOfMonth = array(
         '2023-04-01', '2023-04-02', '2023-04-03', '2023-04-04', '2023-04-05',
         '2023-04-06', '2023-04-07', '2023-04-08', '2023-04-09', '2023-04-10',

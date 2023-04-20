@@ -5,6 +5,7 @@
     error_reporting(E_ALL ^ E_DEPRECATED);
     
     include("db.php");
+    session_start();
 
     // write query for all lists
     $sql = "SELECT id , title , content , published , created_date FROM lists ORDER BY id";
