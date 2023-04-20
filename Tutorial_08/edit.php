@@ -38,25 +38,26 @@
         }
 
         if (empty($title) && empty($content)) {
+            header("Location:edit.php?id=$fetch");
             $redtBorder = 'error2';
             $redbBorder = 'error2';
             $titleError = "Title field is required";
             $contentError = "Content field is required";
             $displayTitle = "";
             $displayContent = "";
-            header("Location:edit.php?id=$fetch");
         }elseif (empty($title)) {
+            header("Location:edit.php?id=$fetch");
             $redtBorder = 'error2';
             $titleError = "Title field is required";
             $displayTitle = "";
             $displayContent = $content;
-            header("Location:edit.php?id=$fetch");
+            
         }elseif (empty($content)) {
+            header("Location:edit.php?id=$fetch");
             $redbBorder = 'error2';
             $contentError = "Content field is required";
             $displayContent = "";
             $displayTitle =  $title;
-            header("Location:edit.php?id=$fetch");
         }else {
             // Update sql
             $updateSql = "UPDATE lists SET title = '$title' , content = '$content' , published = '$publish' WHERE id = $fetch";
