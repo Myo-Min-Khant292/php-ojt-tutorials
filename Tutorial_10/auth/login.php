@@ -9,8 +9,11 @@
 
     $results = mysqli_query($conn , $sql);
     $lists = mysqli_fetch_all($results , MYSQLI_ASSOC);
+    $email = $password = "";
 
     if(isset($_POST['login'])) {
+        $email = mysqli_real_escape_string($conn , $_POST['email']);
+        $password = mysqli_real_escape_string($conn , $_POST['password']);
         $validation = new LoginValidator($_POST);
         $errors= $validation->validateform();
 
@@ -42,12 +45,12 @@
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
             <div class="mb-3 adj">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control <?php echo $redborder ?>" id="email" placeholder="name@example.com">
+                <input type="email" name="email" class="form-control <?php echo $redborder ?>" id="email" value="<?php echo $email; ?>" placeholder="name@example.com">
                 <p class="error"><?php echo $errors['email'] ?? "";?></p>
             </div>
             <div class="mb-3 adj">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control <?php echo $redborder ?>" id="password" placeholder="password">
+                <input type="password" name="password" class="form-control <?php echo $redborder ?>" id="password" value="<?php echo $password; ?>" placeholder="password">
                 <a href="forget_password.php" class="forget">Forget Password?</a>
                 <p class="error"><?php echo $errors['password'] ?? "";?></p>
             </div>

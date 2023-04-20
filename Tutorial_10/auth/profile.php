@@ -12,13 +12,13 @@
     }
 
     if(isset($id)) {
-        // make sql
+        
         $sql = "SELECT id , name , email , image , update_date FROM users WHERE id = $id";
     
-        // get the query result 
+        
         $result = mysqli_query($conn , $sql);
     
-        // fetch result in array format
+        
         $user = mysqli_fetch_assoc($result);
         $displayName = $user['name'];
         $displayEmail = $user['email'];
@@ -50,20 +50,18 @@
             $emailError = "Email field is required";
             $displayName = $name;
             $displayEmail = $email;
-        }elseif (file_exists($imageInput)) {
-            $imgError = "You need to change image or folder name";
         }else {
 
             move_uploaded_file($tmpImage , $imageInput);
-            // Update sql
+           
             $updateSql = "UPDATE users SET name = '$name' , email = '$email' , image = '$image' WHERE id = $fetch";
         
-            // save to database and check
+          
             if(mysqli_query($conn , $updateSql)) {
-                //success
+           
                 header('Location: ../index.php');
             }else {
-                //error
+             
                 echo 'query error' . mysqli_error($conn);
             }
         }

@@ -1,12 +1,13 @@
 /* For all */
 .test2 {
-    width: 50%;
+    width: 40%;
     margin: 30px auto 0 auto;
     border: 1px solid black;
   }
   
   .test2 h1 {
     width: 98.8%;
+    font-size: 30px;
     padding: 20px 0 30px 30px;
     border-bottom: 1px solid black;
     border-width: 90%;

@@ -142,7 +142,7 @@
 
             $result = mysqli_query($conn , $sql);
             $row = mysqli_fetch_assoc($result);
-            $hash = $row['password'];
+            $hash = $row['password'] ?? '';
 
             if (empty($val)) {
                 $this->addError('password' , 'Password cannot be empty');

@@ -4,9 +4,8 @@
 
     error_reporting(E_ALL ^ E_DEPRECATED);
     include("../db.php");
-    session_start();
 
-    $email = $_SESSION['email'];
+    $email = $_GET['id'];
 
     $emailError = $pwdError = $confirmPwdError = "";
     $sql = "SELECT email , password from users";
@@ -73,7 +72,7 @@
 
     <div class="test2">
         <h1>Reset Password</h1>
-        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF'].'?id=' . $email ;?>" method="post">
             <div class="mb-3 adj">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control <?php echo $redborder ?>" id="email" value="<?php echo $email; ?>" readonly>

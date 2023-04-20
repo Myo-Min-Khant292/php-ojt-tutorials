@@ -5,6 +5,7 @@
     error_reporting(E_ALL ^ E_DEPRECATED);
     include("../db.php");
 
+    session_start();
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
@@ -36,22 +37,22 @@
         $mail->SMTPAuth=true;
         $mail->SMTPSecure='tls';
 
-        // h-hotel account
+        
         $mail->Username='myominkhant1287@gmail.com';
         $mail->Password='rdmfffxdawugceah';
 
-        // send by h-hotel email
+        
         $mail->setFrom('myominkhant1287@gmail.com', 'Password Reset');
         // get email from input
         $mail->addAddress($email);
 
-        // HTML body
+        
         $mail->isHTML(true);
         $mail->Subject="Recover your password";
         $mail->Body="<b>Dear User</b>
              <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
-            http://localhost/php-ojt-tutorials/Tutorial_10/auth/reset_password.php?>
+            http://localhost/php-ojt-tutorials/Tutorial_10/auth/reset_password.php?id=$email
             <br><br>
             <p>With regrads,</p>
             <b>Myo Min Khant</b>";
@@ -64,7 +65,6 @@
                     </script>
                 <?php
             }else{
-                $_SESSION['email'] = $_POST['email'];
                 header("Location: ../index.php");
             }
         }else {
