@@ -13,8 +13,9 @@
     require '../libs/PHPMailer/src/PHPMailer.php';
     require '../libs/PHPMailer/src/SMTP.php';
 
+    // echo $address."</br>";
     $emailError = "";
-
+    
     if(isset($_POST['send'])) {
         $sql = "SELECT email from users";
         $result = mysqli_query($conn , $sql);
@@ -28,6 +29,9 @@
                 break;
             }
         }
+        $host = $_SERVER['HTTP_HOST']."</br>";
+        $oldaddress = $_SERVER['PHP_SELF'];
+        $address = str_replace("/forget_password.php" , "" , $oldaddress);
 
         $mail = new PHPMailer;
 
@@ -52,7 +56,7 @@
         $mail->Body="<b>Dear User</b>
              <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
-            http://localhost/php-ojt-tutorials/Tutorial_10/auth/reset_password.php?id=$email
+            http://$host$address/reset_password.php?id=$email
             <br><br>
             <p>With regrads,</p>
             <b>Myo Min Khant</b>";

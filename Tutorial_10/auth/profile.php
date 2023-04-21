@@ -33,6 +33,8 @@
         $image = $_FILES['image']['name'];
         $tmpImage = $_FILES['image']['tmp_name'];
         $imageInput = "../images/".$image;
+        $imgExt = explode('.' , $image);
+        $actualFileType = strtolower(end($imgExt));
 
         if (empty($name) && empty($email)) {
             $redBorder = 'error2';
@@ -49,19 +51,18 @@
             $redBorder = 'error2';
             $emailError = "Email field is required";
             $displayName = $name;
+            $displayEmail = "";
+        }elseif (!($actualFileType == 'jpg' || $actualFileType == 'jpeg' || $actualFileType == 'img' || $actualFileType == 'png')) {
+            $imgError = "Insert only img files";
+            $displayName = $name;
             $displayEmail = $email;
         }else {
-
             move_uploaded_file($tmpImage , $imageInput);
            
             $updateSql = "UPDATE users SET name = '$name' , email = '$email' , image = '$image' WHERE id = $fetch";
-        
-          
             if(mysqli_query($conn , $updateSql)) {
-           
                 header('Location: ../index.php');
             }else {
-             
                 echo 'query error' . mysqli_error($conn);
             }
         }
