@@ -3,6 +3,24 @@
     color: red;
 }
 
+.csv-file {
+    float: right;
+    width: 300px;
+}
+
+.csv-export {
+    float: left;
+    margin-left: 130px;
+}
+
+.csv-import {
+    float: right;
+}
+
+#import-form {
+    display: none;
+}
+
 /* for layout file */
 
 .header {

@@ -17,8 +17,10 @@ use App\Http\Controllers\MajorController;
 */
 
 Route::get('/', [StudentController::class , 'index'])->name("student.index");
+Route::get('/export', [StudentController::class , 'export'])->name("student.export");
 Route::get('/edit/{id}', [StudentController::class , 'edit'])->name("student.edit");
 Route::get('/create', [StudentController::class , 'create'])->name("student.create");
+Route::post('/import' , [StudentController::class , 'import'])->name("student.import");
 Route::post('/store' , [StudentController::class , 'store'])->name("student.store");
 Route::post('/update/{id}' , [StudentController::class , 'update'])->name("student.update");
 Route::post('/destroy/{id}', [StudentController::class , 'destroy'])->name("student.destroy");

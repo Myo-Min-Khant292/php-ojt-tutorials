@@ -6,12 +6,26 @@ use Illuminate\Http\Request;
 use App\Contracts\Services\StudentServiceInterface;
 use App\Contracts\Services\MajorServiceInterface;
 use App\Http\Requests\StudentCreateRequest;
+use App\Exports\StudentsExport;
+use App\Imports\StudentsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Student;
 
 class StudentController extends Controller
 {
     private $majorService;
     private $studentService;
+    
+    public function export()
+    {
+        return Excel::download(new StudentsExport, 'students.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new StudentsImport, $request->file(key:'import_file'));
+        return redirect('/');
+    }
 
     public function __construct(MajorServiceInterface $majorServiceInterface , StudentServiceInterface $studentServiceInterface) {
         $this->majorService = $majorServiceInterface;

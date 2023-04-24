@@ -25,5 +25,13 @@
 
         <script type="text/javascript" src="/js/bootstrap.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#show-form-btn').click(function() {
+                    $('#import-form').toggle();
+                });
+            });
+	    </script>
     </body>
 </html>
