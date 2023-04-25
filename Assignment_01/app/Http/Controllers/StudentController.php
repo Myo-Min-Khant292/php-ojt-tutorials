@@ -13,22 +13,43 @@ class StudentController extends Controller
     private $majorService;
     private $studentService;
 
-    public function __construct(MajorServiceInterface $majorServiceInterface , StudentServiceInterface $studentServiceInterface) {
+    /**
+     * Create a new controller instance.
+     * @param StudnetServiceInterface $taskServiceInterface
+     * @return void
+     */
+    public function __construct(MajorServiceInterface $majorServiceInterface , StudentServiceInterface $studentServiceInterface) 
+    {
         $this->majorService = $majorServiceInterface;
         $this->studentService = $studentServiceInterface;
     }
 
-    public function index() {
+    /**
+     * Store Student.
+     * @return object
+    */
+    public function index() 
+    {
         $students = $this->studentService->getStudent();
-        return view('student.index' , ['students' => $students]);
+        return view('student#index' , ['students' => $students]);
     }
 
-    public function create() {
+    /**
+     * Go to Create Page.
+     * @return object
+    */
+    public function create() 
+    {
         $majors = $this->majorService->getMajor();
-        return view('student.create' , ['majors' => $majors]);
+        return view('student#create' , ['majors' => $majors]);
     }
 
-    public function store(StudentCreateRequest $request) {
+    /**
+     * Create student.
+     * @return void
+    */
+    public function store(StudentCreateRequest $request) 
+    {
         $this->studentService->storeStudent($request->only([
             'name',
             'major',
@@ -39,13 +60,24 @@ class StudentController extends Controller
         return redirect('/');
     }
 
-    public function edit($id) {
+    /**
+     * Show edit Page.
+     * @return object
+    */
+    public function edit($id) 
+    {
         $majors = $this->majorService->getMajor();
         $student = $this->studentService->showStudent($id);
-        return view('student.edit' , ['student' => $student , 'majors' => $majors]);
+        return view('student#edit' , ['student' => $student , 'majors' => $majors]);
     }
 
-    public function update(StudentCreateRequest $request , $id) {
+    /**
+     * Update Studnet.
+     * @param StudnetCreateRequest $request
+     * @return object
+    */
+    public function update(StudentCreateRequest $request , $id) 
+    {
         $this->studentService->updateStudent($id , $request->only([
             'name',
             'major',
@@ -56,7 +88,12 @@ class StudentController extends Controller
         return redirect('/');
     }
 
-    public function destroy($id) {
+    /**
+     * Delete Student.
+     * @return void
+    */
+    public function destroy($id) 
+    {
         $student = $this->studentService->destroyStudent($id);
         return redirect('/');
     }

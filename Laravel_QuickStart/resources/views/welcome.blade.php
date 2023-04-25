@@ -2,7 +2,7 @@
 @section('content')
     <div class="task">
         <h3>New Task</h3>
-        <form action="{{route('task.index')}}" method="post">
+        <form action="{{route('task#index')}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="task" class="form-label">Task</label>
@@ -21,7 +21,7 @@
             <tr>
                 <td>{{$task->name}}</td>
                 <td>
-                    <form action="{{route('task.destroy', $task->id)}}" id="form" method="POST">
+                    <form action="{{route('task#destroy', $task->id)}}" id="form" method="POST">
                         @csrf 
                         @method('DELETE')                     
                         <input type='submit' class="btn btn-danger" value="Destroy">

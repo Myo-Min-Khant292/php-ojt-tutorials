@@ -13,8 +13,7 @@ class StudentDao implements StudentDaoInterface
     */
     public function getStudent(): object 
     {
-        return Student::all();
-        
+        return Student::all();  
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <div class="btn-div clearfix">
-        <a href="{{route('student.create')}}" class="btn btn-primary">Create</a>
+        <a href="{{route('student#create')}}" class="btn btn-primary">Create</a>
     </div>
     <div class="info">
         <h1>Students Lists</h1>
@@ -27,9 +27,9 @@
                     <td>{{$student->email}}</td>
                     <td>{{$student->address}}</td>
                     <td>
-                        <form action="{{route('student.destroy' , $student->id)}}" id="form" method="POST">
+                        <form action="{{route('student#destroy' , $student->id)}}" id="form" method="POST">
                             @csrf
-                            <a href="{{route('student.edit' , $student->id)}}" class="btn btn-success">Edit</a>
+                            <a href="{{route('student#edit' , $student->id)}}" class="btn btn-success">Edit</a>
                             <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
                         </form>
                     </td>          

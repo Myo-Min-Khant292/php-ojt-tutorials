@@ -2,7 +2,7 @@
 @section('content')
     <div class="info">
         <h3>Student Edit</h3>
-        <form action="{{route('student.update' , $student->id)}}" class="edit-form clearfix" id="form" method="POST">
+        <form action="{{route('student#update' , $student->id)}}" class="edit-form clearfix" id="form" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -34,7 +34,7 @@
                 <textarea class="form-control" name="address" id="address" rows="3">{{$student->address}}</textarea>
                 <p class="error">@error ('address'){{$message}} @enderror</p>
             </div>
-            <a href="{{route('student.index')}}" class="btn btn-secondary left">Back</a>
+            <a href="{{route('student#index')}}" class="btn btn-secondary left">Back</a>
             <button type="submit" name="update" class="btn btn-primary right">Update</button>
         </form>
     </div>

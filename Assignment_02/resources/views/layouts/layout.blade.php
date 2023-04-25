@@ -17,8 +17,8 @@
         <div class="header">
             <div class="header-nav clearfix">
                 <h2>NavBar</h2>
-                <a href="{{route('major.index')}}">Majors</a>
-                <a href="{{route('student.index')}}">Students</a>
+                <a href="{{route('major#index')}}">Majors</a>
+                <a href="{{route('student#index')}}">Students</a>
             </div>
         </div>
         @yield('content');

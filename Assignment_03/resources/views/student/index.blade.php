@@ -2,11 +2,11 @@
 @section('content')
 
     <div class="btn-div clearfix">
-        <a href="{{route('student.create')}}" class="btn btn-primary">Create</a>
+        <a href="{{route('student#create')}}" class="btn btn-primary">Create</a>
         <div class="csv-file clearfix">
-            <a href="{{route('student.export')}}" class="btn btn-primary csv-export">Export</a>
+            <a href="{{route('student#export')}}" class="btn btn-primary csv-export">Export</a>
             <button id="show-form-btn" class="btn btn-primary csv-import">Import</button>
-            <form action="{{route('student.import')}}" id="import-form" class="clearfix" method="POST" enctype="multipart/form-data">
+            <form action="{{route('student#import')}}" id="import-form" class="clearfix" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="import_file" id="file" class="form-control import-file">
                 <button type="submit" class="btn btn-primary">Send</button>

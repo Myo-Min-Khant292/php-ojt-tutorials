@@ -26,22 +26,34 @@ class TaskController extends Controller
         $this->taskService = $taskServiceInterface;
     }
 
-
-
-    public function index() {
+    /**
+     * Get task
+     * @return object
+    */
+    public function index() 
+    {
         $tasks = $this->taskService->getTasks();
         return view('welcome' , ['tasks' => $tasks]);
     }
 
-        
-    public function store(TaskCreateRequest $request) {
+    /**
+     * Store task
+     * @return void
+    */   
+    public function store(TaskCreateRequest $request) 
+    {
         $this->taskService->storeTask($request->only([
             'name',
         ]));
         return redirect('/');
     }
     
-    public function destroy($id) {
+    /**
+     * Delete task
+     * @return void
+    */
+    public function destroy($id) 
+    {
         $this->taskService->deleteTaskById($id);
         return redirect('/');
     }

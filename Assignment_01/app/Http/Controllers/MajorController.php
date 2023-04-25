@@ -26,15 +26,29 @@ class MajorController extends Controller
         $this->majorService = $majorServiceInterface;
     }
 
+
+    /**
+     * Store Major.
+     * @return object
+    */
     public function index() {
         $majors = $this->majorService->getMajor();
-        return view('major.index' , ['majors' => $majors]);
+        return view('major#index' , ['majors' => $majors]);
     }
 
+    /**
+     * Go to Create Page.
+     * @return void
+    */
     public function create() {
-        return view('major.create');
+        return view('major#create');
     }
 
+    /**
+     * Store Major.
+     * @param MajorCreateRequest $request
+     * @return object
+    */
     public function store(MajorCreateRequest $request) {
         $this->majorService->storeMajor($request->only([
             'name',
@@ -42,11 +56,20 @@ class MajorController extends Controller
         return redirect('/major');
     }
 
+    /**
+     * Show edit Page.
+     * @return object
+    */
     public function edit($id) {
         $major = $this->majorService->showMajor($id);
-        return view('major.edit' , ['major' => $major]);
+        return view('major#edit' , ['major' => $major]);
     }
 
+    /**
+     * Update Major.
+     * @param MajorCreateRequest $request
+     * @return object
+    */
     public function update(MajorCreateRequest $request , $id) {
         $this->majorService->updateMajor($id ,$request->only([
             'name',
@@ -54,6 +77,10 @@ class MajorController extends Controller
         return redirect('/major');
     }
 
+    /**
+     * Delete Major.
+     * @return void
+    */
     public function destroy($id) {
         $this->majorService->destroyMajor($id);
         return redirect('/major');
