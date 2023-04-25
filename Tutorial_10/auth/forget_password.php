@@ -56,7 +56,7 @@
         $mail->Body="<b>Dear User</b>
              <h3>We received a request to reset your password.</h3>
             <p>Kindly click the below link to reset your password</p>
-            http://$host$address/reset_password.php?id=$email
+            http://localhost/php-ojt-tutorials/Tutorial_10/auth/reset_password.php?id=$email
             <br><br>
             <p>With regrads,</p>
             <b>Myo Min Khant</b>";
