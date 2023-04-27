@@ -55,7 +55,7 @@ class StudentController extends Controller
     public function index() 
     {
         $students = $this->studentService->getStudent();
-        return view('student#index' , ['students' => $students]);
+        return view('student.index' , ['students' => $students]);
     }
 
     /**
@@ -65,7 +65,7 @@ class StudentController extends Controller
     public function create() 
     {
         $majors = $this->majorService->getMajor();
-        return view('student#create' , ['majors' => $majors]);
+        return view('student.create' , ['majors' => $majors]);
     }
 
     /**
@@ -92,7 +92,7 @@ class StudentController extends Controller
     {
         $majors = $this->majorService->getMajor();
         $student = $this->studentService->showStudent($id);
-        return view('student#edit' , ['student' => $student , 'majors' => $majors]);
+        return view('student.edit' , ['student' => $student , 'majors' => $majors]);
     }
 
     /**

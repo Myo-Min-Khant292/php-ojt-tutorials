@@ -34,7 +34,7 @@ class MajorController extends Controller
     public function index() 
     {
         $majors = $this->majorService->getMajor();
-        return view('major#index' , ['majors' => $majors]);
+        return view('major.index' , ['majors' => $majors]);
     }
 
     /**
@@ -43,7 +43,7 @@ class MajorController extends Controller
     */
     public function create() 
     {
-        return view('major#create');
+        return view('major.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class MajorController extends Controller
     public function edit($id) 
     {
         $major = $this->majorService->showMajor($id);
-        return view('major#edit' , ['major' => $major]);
+        return view('major.edit' , ['major' => $major]);
     }
 
     /**
