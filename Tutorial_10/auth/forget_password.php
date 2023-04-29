@@ -42,13 +42,13 @@
         $mail->SMTPSecure='tls';
 
         
-        $mail->Username='myominkhant1287@gmail.com';
-        $mail->Password='rdmfffxdawugceah';
+        // $mail->Username='myominkhant1287@gmail.com';
+        // $mail->Password='rdmfffxdawugceah';
 
         
-        $mail->setFrom('myominkhant1287@gmail.com', 'Password Reset');
-        // get email from input
-        $mail->addAddress($email);
+        // $mail->setFrom('myominkhant1287@gmail.com', 'Password Reset');
+        // // get email from input
+        // $mail->addAddress($email);
 
         
         $mail->isHTML(true);

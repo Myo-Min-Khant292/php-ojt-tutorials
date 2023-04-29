@@ -83,8 +83,8 @@ class StudentController extends Controller
             'email',
             'address',
         ]));
-        $student = Student::where('email', $request->input('email'))->first();
-        Mail::to($student->email)->send(new SendMail());
+        $student = request('email');
+        Mail::to($student)->send(new SendMail());
         return redirect('/');
     }
 
