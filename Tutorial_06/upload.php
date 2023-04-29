@@ -34,10 +34,11 @@
                     if(!($actualFileExt == 'jpg' || $actualFileExt == 'jpeg' || $actualFileExt == 'img' || $actualFileExt == 'png')) {
                         $redbBorder = 'error2';
                         $imgError = "<p class='error'>You can only inset img format</p>";
-                    }elseif ($imgSize > 20000) {
-                        $redbBorder = 'error2';
-                        $imgError = "<p class='error'>Image size should not be more than 20000</p>";
-                    }else {    
+                     }//elseif ($imgSize > 20000) {
+                    //     $redbBorder = 'error2';
+                    //     $imgError = "<p class='error'>Image size should not be more than 20000</p>";
+                    // }
+                    else {    
                         mkdir("images/$folderLocation");
                         $fileDestination = "images/$folderLocation/".$imgName;
                         if(file_exists("images/$folderLocation/$imgName")) {
