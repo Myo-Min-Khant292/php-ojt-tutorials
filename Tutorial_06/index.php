@@ -69,7 +69,7 @@
                                 <div class="img-display-box">
                                     <img class="img" src="images/<?php echo $folderFile."/".$imageFile?>" alt="<?php echo $imageFile?>"></img>
                                     <p class="img-name"><?php echo $imageFile ?></p>
-                                    <p><?php echo $_SERVER['HTTP_HOST'] . "/Tutorial_06/images/$folderFile/$imageFile";?></p>
+                                    <p><?php echo $_SERVER['HTTP_HOST'] . "/php-ojt-tutorials/Tutorial_06/images/$folderFile/$imageFile";?></p>
                                     <a href="index.php?id=<?php echo $folderPath?>" class="destory">Delete</a>
                                 </div> 
                             </div>     

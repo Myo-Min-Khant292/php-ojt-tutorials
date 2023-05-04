@@ -18,7 +18,7 @@
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBody">
                 @foreach ($students as $student)
                 <tr>
                     <th scope="row">{{$student->id}}</th>
@@ -31,29 +31,24 @@
                         <form action="{{route('student#destroy' , $student->id)}}" id="form" method="POST">
                             @csrf
                             <a href="{{route('student#edit' , $student->id)}}" class="btn btn-success">Edit</a>
-                            <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
                         </form>
+                        <button type="submit" name="delete" class="btn btn-danger" onclick="deleteData('{{$student->id}}')">Delete</button>
                     </td>          
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        import axios from 'axios';
-        function go_ex()
-        {
-            axios.get('/ex')
-            .then(response => {
-                // Handle the response data here
-                console.log(response.data);
-            })
-            .catch(error => {
-                // Handle any errors here
-                console.error(error);
-            })
-            .finally(function () {
-            });
+        function deleteData(id) {
+            axios.delete(`/destroy/${id}`)
+                .then(response => {
+                console.log(response);
+                })
+                .catch(error => {
+                console.log(error);
+                });
         }
     </script>
 @endsection

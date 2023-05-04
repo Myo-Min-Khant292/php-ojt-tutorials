@@ -14,7 +14,7 @@ class MajorDao implements MajorDaoInterface
 
     public function getMajor() : object
     {
-        return Major::all();
+        return Major::paginate(5);
     }
 
     /**

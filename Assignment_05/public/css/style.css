@@ -25,6 +25,11 @@
     margin: 20px 0 0 0 ;
 }
 
+.center {
+    margin: 0 auto;
+    width: 20%;
+}
+
 /* for layout file */
 
 .header {
