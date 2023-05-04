@@ -8,8 +8,6 @@
 
     /**
      * Function for generate title
-     *
-     * 
      * @return string $randomTitle
      */
 
@@ -23,8 +21,6 @@
 
     /**
      * Function for generate content
-     *
-     * 
      * @return string $randomcontent
      */
 
@@ -40,8 +36,6 @@
 
     /**
      * Function for generate datetime
-     *
-     * 
      * @return string $storeTimeStamp
      */
 
