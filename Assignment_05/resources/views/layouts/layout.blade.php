@@ -34,27 +34,6 @@
                 $('#show-form-btn').click(function() {
                     $('#import-form').toggle();
                 });
-
-                // Set number of rows per page
-                // var rowsPerPage = 5;
-
-                // // Initialize the table and pagination
-                // var table = $('#table').DataTable({
-                //     paging: true,
-                //     lengthChange: false,
-                //     pageLength: rowsPerPage
-                // });
-
-                // // Handle pagination click event
-                // $('nav ul.pagination').on('click', 'a', function(event){
-                //     event.preventDefault();
-
-                //     // Get the page number from the clicked link
-                //     var page = $(this).text();
-
-                //     // Set the current page in the table
-                //     table.page(page - 1).draw(false);
-                // });
             }); 
 	    </script>
     </body>
