@@ -8,7 +8,8 @@ function createData() {
     })
     .then(response => {
         console.log(response.data);
-        window.location.href = "/";
+        window.history.pushState(null, null, '/');
+        loadPage();
     })
     .catch(error => {
         console.log(error);

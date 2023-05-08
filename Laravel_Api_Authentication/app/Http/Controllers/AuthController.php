@@ -42,12 +42,14 @@ class AuthController extends Controller
         ], $code);
     }
 
-    // public function logout() {
-    //     auth()->user()->tokens()->delete();
-    //     $code = 200;
-    //     return response()->json([
-    //         'status' => 'Success' , 
-    //         'message' => 'Token Revoked',
-    //     ],$code);
-    // }
+    public function logout() {
+
+        auth()->user()->tokens()->delete();
+        $code = 200;
+        
+        return response()->json([
+            'status' => 'Success' , 
+            'message' => 'Token Revoked',
+        ],$code);
+    }
 }
