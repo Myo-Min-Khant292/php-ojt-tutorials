@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+        'name',
+        'major_id',
+        'phone',
+        'email',
+        'address'
+    ];
 
     public function major()
     {

@@ -20,6 +20,13 @@ interface StudentDaoInterface
     public function storeStudent() : void;
 
     /**
+     * Search Student list
+     * @return object
+    */
+    public function searchStudent() : object; 
+
+
+    /**
      * Show Specific Student
      * @return object 
     */

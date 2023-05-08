@@ -40,6 +40,15 @@ class StudentService implements StudentServiceInterface
     }
 
     /**
+     * Search Student list
+     * @return object
+    */
+    public function searchStudent() : object
+    {
+        return $this->studentDao->searchStudent();
+    }
+
+    /**
      * Show Specific Student
      * @return object 
     */

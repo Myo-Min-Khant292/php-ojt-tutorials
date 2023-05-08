@@ -8,6 +8,33 @@
     width: 20%;
 }
 
+.csv-file {
+    float: right;
+    width: 300px;
+}
+
+.csv-export {
+    float: left;
+    margin-left: 130px;
+}
+
+.csv-import {
+    float: right;
+}
+
+#import-form {
+    display: none;
+}
+
+.navi {
+    margin: 20px 0 0 0 ;
+}
+
+.adj {
+    margin-top: -45px;
+    margin-right: 20px;
+}
+
 /* for layout file */
 
 .header {
@@ -47,9 +74,13 @@
     border: 1px solid gray;
 }
 
-.info > h1 {
+.info > .index-search {
     background-color: rgb(230, 227, 227);
     padding: 10px 10px;
+}
+
+.index-search > h1 {
+    float: left;
 }
 
 .info > h3 {
@@ -59,7 +90,16 @@
 
 .table {
     width: 95%;
-    margin: 0 auto;
+    margin: 10px auto;
+}
+
+.search {
+    float: right;
+    width: 310px;
+}
+
+.search-box {
+    width: 200px;
 }
 
 /* edit */

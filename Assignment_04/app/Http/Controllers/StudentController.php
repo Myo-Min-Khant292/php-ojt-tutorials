@@ -6,15 +6,39 @@ use Illuminate\Http\Request;
 use App\Contracts\Services\StudentServiceInterface;
 use App\Contracts\Services\MajorServiceInterface;
 use App\Http\Requests\StudentCreateRequest;
+use App\Exports\StudentsExport;
+use App\Imports\StudentsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Student;
 
 class StudentController extends Controller
 {
     private $majorService;
     private $studentService;
+    
+    /**
+     * Export csv file.
+     * @return void
+    */
+    public function export()
+    {
+        return Excel::download(new StudentsExport, 'students.xlsx');
+    }
+
+    /**
+     * Import csv file.
+     * @param Request $request
+     * @return void
+    */
+    public function import(Request $request)
+    {
+        Excel::import(new StudentsImport, $request->file(key:'import_file'));
+        return redirect('/');
+    }
 
     /**
      * Create a new controller instance.
+     * @param MajorServiceInterface $majorServiceInterface
      * @param StudnetServiceInterface $taskServiceInterface
      * @return void
      */
@@ -31,6 +55,8 @@ class StudentController extends Controller
     public function index() 
     {
         $students = $this->studentService->getStudent();
+
+        
         return view('student.index' , ['students' => $students]);
     }
 
@@ -58,6 +84,16 @@ class StudentController extends Controller
             'address',
         ]));
         return redirect('/');
+    }
+
+    /**
+     * Search Student list
+     * @return object
+    */
+    public function search(Request $request)
+    {
+        $students = $this->studentService->searchStudent();
+        return view('student.index' , ['students' => $students]);
     }
 
     /**
@@ -95,6 +131,6 @@ class StudentController extends Controller
     public function destroy($id) 
     {
         $student = $this->studentService->destroyStudent($id);
-        return redirect('/');
+        return response()->json(['message' => 'Student record deleted successfully']);
     }
 }

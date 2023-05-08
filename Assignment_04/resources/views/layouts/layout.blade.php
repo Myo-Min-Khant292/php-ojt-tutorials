@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/bootstrap.css">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body class="antialiased">
@@ -25,5 +26,18 @@
 
         <script type="text/javascript" src="/js/bootstrap.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="/js/script.js"></script>
+
+        <script>
+            let table = new DataTable('#myTable');
+            $(document).ready(function() {
+                $('#show-form-btn').click(function() {
+                    $('#import-form').toggle();
+                });
+            }); 
+	    </script>
     </body>
 </html>

@@ -13,7 +13,7 @@ class StudentDao implements StudentDaoInterface
     */
     public function getStudent(): object 
     {
-        return Student::paginate(5);     
+        return Student::paginate(5);        
     }
 
     /**
@@ -29,6 +29,22 @@ class StudentDao implements StudentDaoInterface
         $student->email = request('email');
         $student->address = request('address');
         $student->save();
+    }
+
+    /**
+     * Search Student list
+     * @return object
+    */
+    public function searchStudent(): object
+    {
+        $search_text = request('search_text');
+        $result_list = Student::where('name', 'LIKE', "%".$search_text."%")
+                       ->orWhere('major_id', 'LIKE', "%".$search_text."%")
+                       ->orWhere('phone', 'LIKE', "%".$search_text."%")
+                       ->orWhere('email', 'LIKE', "%".$search_text."%")
+                       ->orWhere('address', 'LIKE', "%".$search_text."%")
+                       ->get();
+        return $result_list;
     }
 
     /**

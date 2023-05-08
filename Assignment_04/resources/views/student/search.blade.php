@@ -2,16 +2,7 @@
 @section('content')
 
     <div class="btn-div clearfix">
-        <a href="{{route('student#create')}}" class="btn btn-primary">Create</a>
-        <div class="csv-file clearfix">
-            <a href="{{route('student#export')}}" class="btn btn-primary csv-export">Export</a>
-            <button id="show-form-btn" class="btn btn-primary csv-import">Import</button>
-            <form action="{{route('student#import')}}" id="import-form" class="clearfix" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="import_file" id="file" class="form-control import-file">
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </div>
+        <h1>This is search tab</h1>
     </div>
     <div class="info">
         <div class="index-search clearfix">
@@ -46,8 +37,11 @@
                     <td>{{$student->email}}</td>
                     <td>{{$student->address}}</td>
                     <td>
-                        <a href="{{route('student#edit' , $student->id)}}" class="btn btn-success">Edit</a>
-                        <button type="submit" name="delete" class="btn btn-danger" onclick="deleteData('{{$student->id}}' , this.parentNode.parentNode)">Delete</button>
+                        <form action="{{route('student#destroy' , $student->id)}}" id="form" method="POST">
+                            @csrf
+                            <a href="{{route('student#edit' , $student->id)}}" class="btn btn-success">Edit</a>
+                            <button type="submit" name="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                        </form>
                     </td>          
                 </tr>
                 @endforeach

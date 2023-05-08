@@ -2,7 +2,7 @@
 @section('content')
     <div class="info">
         <h3>Student Edit</h3>
-        <form action="{{route('student#store')}}" class="edit-form clearfix" id="form" method="POST">
+        <form class="edit-form clearfix" id="form" >
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -35,7 +35,10 @@
                 <p class="error">@error ('address'){{$message}} @enderror</p>
             </div>
             <a href="{{route('student#index')}}" class="btn btn-secondary left">Back</a>
-            <button type="submit" name="create" class="btn btn-primary right">Create</button>
+            
         </form>
+        <button type="submit" name="create" onclick="createData()" class="btn btn-primary right adj">Create</button>
+        
     </div>
+
 @endsection
