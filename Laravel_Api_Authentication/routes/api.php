@@ -16,7 +16,7 @@ use App\Models\User;
 */
 
 Route::post('/auth/register' , [AuthController::class , 'register']);
-Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'login']);
 
 
 Route::group(['middleware' => ['auth:sanctum']] , function() {

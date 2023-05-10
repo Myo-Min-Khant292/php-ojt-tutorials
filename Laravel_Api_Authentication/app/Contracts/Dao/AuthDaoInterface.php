@@ -13,5 +13,4 @@ interface AuthDaoInterface
     */
     public function registerUser(array $userData): object;
 
-    
 }

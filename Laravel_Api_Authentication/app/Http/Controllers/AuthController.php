@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-//use App\Http\Requests\LoginRequest;
-
+use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Contracts\Services\AuthServiceInterface;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
@@ -32,19 +31,41 @@ class AuthController extends Controller
             'password',
         ]));
 
-        $token = $user->createToken('API Token')->plainTextToken;
-        $code = 200;
         return response()->json([
             'status' => 'Success',
             'message' => 'Successfully Registered',
             'user' => $user,
-            'data' => $token,
-        ], $code);
+        ]);
     }
 
-    public function logout() {
+    public function login(Request $request) {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-        auth()->user()->tokens()->delete();
+        if (Auth::attempt($credentials)) {
+ 
+            $token = $request->user()->createToken('API Token')->plainTextToken;
+            $code = 200;
+
+            return response()->json([
+                'status' => 'Success',
+                'message' => 'Successfully login',
+                'user' => $credentials,
+                'data' => $token,
+            ], $code);
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+
+    
+    public function logout(Request $request) {
+        $request->user()->tokens()->delete();
         $code = 200;
         
         return response()->json([

@@ -1,4 +1,5 @@
 <?php
+    phpinfo();
     include('upload.php');
 
     $folderDir = "images/";

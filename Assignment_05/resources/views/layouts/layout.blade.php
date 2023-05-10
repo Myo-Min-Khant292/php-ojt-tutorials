@@ -17,7 +17,7 @@
     <body class="antialiased">
         <div class="header">
             <a href="#" class="auth auth1">Register</a>
-            <a href="#" class="auth auth2">Login</a>grteeidijlsdkfjlsdfjsd
+            <a href="#" class="auth auth2">Login</a>
             <div class="header-nav clearfix">
                 <h2>NavBar</h2>
                 <a href="{{route('major#index')}}">Majors</a>
